@@ -14,7 +14,16 @@
         <li class="nav-item"><a class="nav-link" routerLink="team">Team</a></li>
         <li class="nav-item"><a class="nav-link" routerLink="testimonials">Testimonials</a></li>
         <li class="nav-item"><a class="nav-link" routerLink="contacts">Contacts</a></li>
-      </ul><a class="btn btn-primary shadow" role="button" routerLink="sign-up">Sign up</a>
+      </ul><a class="btn btn-primary shadow" role="button" routerLink="sign-in" *ngIf="!isLoggedIn()">Sign in</a>
+      <div class="dropdown pmd-dropdown pmd-user-info ml-auto" *ngIf="isLoggedIn()">
+        <a class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
+          <img class="mr-2" src="assets/img/team/graduates.png" width="50" height="50" alt="avatar">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+          <a class="dropdown-item" >Edit Profile</a>
+          <a class="dropdown-item" >Logout</a>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
