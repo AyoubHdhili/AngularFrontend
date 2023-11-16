@@ -20,7 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
-import {NgToastModule} from "ng-angular-popup";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -46,7 +46,8 @@ import {NgToastModule} from "ng-angular-popup";
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatButtonModule,
-    NgToastModule
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

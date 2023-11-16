@@ -10,15 +10,16 @@ import {TeamComponent} from "./team/team.component";
 import {TestimonialsComponent} from "./testimonials/testimonials.component";
 import {SignInComponent} from "./sign-in/sign-in.component";
 import {SignUpComponent} from "./sign-up/sign-up.component";
+import {AuthGuard} from "./shared/services/auth/auth.guard";
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path:'contacts', component:ContactsComponent},
-  {path:'pricing', component:PricingComponent},
-  {path:'products', component:ProductsComponent},
-  {path:'projects', component:ProjectsComponent},
-  {path:'services', component:ServicesComponent},
+  {path:'pricing', component:PricingComponent, canActivate:[AuthGuard]},
+  {path:'products', component:ProductsComponent, canActivate:[AuthGuard]},
+  {path:'projects', component:ProjectsComponent, canActivate:[AuthGuard]},
+  {path:'services', component:ServicesComponent, canActivate:[AuthGuard]},
   {path:'team', component:TeamComponent},
   {path:'testimonials', component:TestimonialsComponent},
   {path:'sign-in', component: SignInComponent},

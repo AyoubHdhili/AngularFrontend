@@ -3,6 +3,7 @@ import {AuthService} from "../shared/services/auth/auth.service";
 import {User} from "../shared/models/User";
 import {NgToastService} from "ng-angular-popup";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-sign-in',
@@ -12,13 +13,17 @@ import {Router} from "@angular/router";
 export class SignInComponent {
   user:User = new User();
 
-  constructor(private authService:AuthService, private toast:NgToastService, private router: Router) {
+  constructor(private authService:AuthService, private toast: ToastrService, private router: Router) {
   }
 
   onSubmit() {
     console.log(this.user);
     this.authService.Authenticate(this.user).subscribe((res) => {
-      this.toast.success({detail : "Logged in successfully !", summary:`welcome back`, duration:5000});
+        console.log(res);
+      this.toast.success("welcome back", `Logged in successfully !`,{
+          timeOut: 5000,
+          positionClass:'toast-top-center'
+          });
       localStorage.setItem('token', res.token);
       localStorage.setItem('userid',String(res.user.id));
       localStorage.setItem('firstname', res.user.firstname);
@@ -27,9 +32,24 @@ export class SignInComponent {
       if(res.user.role === 'USER'){
         this.router.navigate(['/home']);
       }
+      if(res.user.role === 'ADMIN'){
+        this.router.navigate([]);
+      }
     },
       (err) =>{
-      this.toast.error({detail:"Error Message", summary:"Wrong email or password !!", duration:5000})
+        console.log(typeof err.status);
+        if (err.status == 400){
+          this.toast.error("Please Sign Up !!", "Invalid Mail Adress",{
+            timeOut:5000,
+            positionClass:'toast-top-center'
+          })
+        }
+        else{
+          this.toast.error("Please verify your password !!", "Wrong password",{
+            timeOut: 5000,
+            positionClass:'toast-top-center'
+          })
+        }
       })
   }
 

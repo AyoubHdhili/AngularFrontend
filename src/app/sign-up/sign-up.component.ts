@@ -3,7 +3,7 @@ import {User} from "../shared/models/User";
 import {AuthService} from "../shared/services/auth/auth.service";
 import {Roles} from "../shared/enums/role";
 import {Router} from "@angular/router";
-import {NgToastService} from "ng-angular-popup";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +12,7 @@ import {NgToastService} from "ng-angular-popup";
 })
 export class SignUpComponent {
   user:User = new User();
-  constructor(private authService : AuthService, private router:Router, private toast: NgToastService) {
+  constructor(private authService : AuthService, private router:Router, private toast: ToastrService) {
   }
 
 
@@ -20,11 +20,17 @@ export class SignUpComponent {
     this.user.role = Roles.user;
     console.log(this.user);
     this.authService.Register(this.user).subscribe((res) =>{
-      this.toast.success({detail:"Success Message", summary:"Register successfully!", duration:5000})
+      this.toast.success("Register successfully!", "Success Message", {
+        timeOut: 5000,
+        positionClass:'toast-top-center'
+      })
       this.router.navigate(['sign-in']);
     },
       (err) =>{
-      this.toast.error({detail: "Error Message", summary: "Register Failed", duration: 5000})
+      this.toast.error( err.error.errorMessage, "Register Failed", {
+        timeOut: 3000,
+        positionClass:'toast-top-center'
+      })
       })
   }
 }
