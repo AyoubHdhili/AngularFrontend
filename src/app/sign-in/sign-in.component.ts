@@ -30,7 +30,7 @@ export class SignInComponent {
       localStorage.setItem('lastname', res.user.lastname);
         console.log(res.user.role)
       if(res.user.role === 'USER'){
-        this.router.navigate(['/home']);
+        this.router.navigate(['/user/home']);
       }
       if(res.user.role === 'ADMIN'){
         this.router.navigate([]);
