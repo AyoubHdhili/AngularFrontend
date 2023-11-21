@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
 import {ToastrModule} from "ngx-toastr";
+import { StudentComponent } from './testservice/student/student.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {ToastrModule} from "ngx-toastr";
     ProductComponent,
     SignInComponent,
     SignUpComponent,
+    StudentComponent,
   ],
   imports: [
     BrowserModule,
