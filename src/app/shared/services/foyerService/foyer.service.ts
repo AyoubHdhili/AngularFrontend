@@ -25,11 +25,12 @@ export class FoyerService {
   addFoyer(data: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
         // Add any other headers if needed
       })
     };
-  
+
     return this._http.post<any>('http://localhost:8089/app/foyer/add-foyer', data, httpOptions);
   }
 }
