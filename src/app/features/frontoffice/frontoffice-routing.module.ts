@@ -11,7 +11,6 @@ import {ContactsComponent} from "../../frontoffice/contacts/contacts.component";
 import {HomeComponent} from "../../frontoffice/home/home.component";
 const routes: Routes = [
   {path:'home', component:HomeComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path:'contacts', component:ContactsComponent},
   {path:'pricing', component:PricingComponent, canActivate:[AuthGuard]},
   {path:'products', component:ProductsComponent, canActivate:[AuthGuard]},
