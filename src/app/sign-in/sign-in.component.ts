@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AuthService} from "../shared/services/auth/auth.service";
+import {AuthService} from "../shared/auth/auth.service";
 import {User} from "../shared/models/User";
 import {NgToastService} from "ng-angular-popup";
 import {Router} from "@angular/router";

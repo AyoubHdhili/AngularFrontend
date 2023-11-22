@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {TestimonialsComponent} from "../../frontoffice/testimonials/testimonials.component";
 import {TeamComponent} from "../../frontoffice/team/team.component";
-import {AuthGuard} from "../../shared/services/auth/auth.guard";
+import {AuthGuard} from "../../shared/auth/auth.guard";
 import {ServicesComponent} from "../../frontoffice/services/services.component";
 import {ProjectsComponent} from "../../frontoffice/projects/projects.component";
 import {ProductsComponent} from "../../products/products.component";
