@@ -10,7 +10,7 @@ import {TeamComponent} from "./frontoffice/team/team.component";
 import {TestimonialsComponent} from "./frontoffice/testimonials/testimonials.component";
 import {SignInComponent} from "./sign-in/sign-in.component";
 import {SignUpComponent} from "./sign-up/sign-up.component";
-import {AuthGuard} from "./shared/services/auth/auth.guard";
+import {AuthGuard} from "./shared/auth/auth.guard";
 
 const routes: Routes = [
   {path:'sign-in', component: SignInComponent},

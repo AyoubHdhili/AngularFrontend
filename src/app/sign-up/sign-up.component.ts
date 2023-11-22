@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {User} from "../shared/models/User";
-import {AuthService} from "../shared/services/auth/auth.service";
+import {AuthService} from "../shared/auth/auth.service";
 import {Roles} from "../shared/enums/role";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";

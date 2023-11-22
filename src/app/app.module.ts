@@ -23,12 +23,18 @@ import {MatButtonModule} from "@angular/material/button";
 import {ToastrModule} from "ngx-toastr";
 import { FrontofficeComponent } from './frontoffice/frontoffice.component';
 import { BackofficeComponent } from './backoffice/backoffice.component';
+import { NavbarbackComponent } from './backoffice/navbarback/navbarback.component';
+import { SidebarbackComponent } from './backoffice/sidebarback/sidebarback.component';
+import { GestionFoyerComponent } from './backoffice/gestion-foyer/gestion-foyer.component';
+import { FormFoyerComponent } from './backoffice/forms/form-foyer/form-foyer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
+   
+
   ],
   imports: [
     BrowserModule,
