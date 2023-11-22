@@ -4,10 +4,11 @@ export class Etudiant {
     idEtudiant!: number;
     nomEt!: string;
     prenomEt!: string;
-    birthDate!: string;
+    birthDate!: Date;
     cin!: number;
     email!: string;
     ecole!: string;
-    dateNaissance!: Date;
-    reservations!: Reservation[]
+    reservations!: Reservation[];
+    schoolperformance!: number;
+    interests!: string;
 }

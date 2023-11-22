@@ -1,0 +1,96 @@
+<router-outlet></router-outlet>
+<form [formGroup]="yourForm" (ngSubmit)="modify()" style="width: 25%; padding-left: 5%; margin : auto;float: left;">
+    <div class="mb-3">
+        <label class="form-label">
+            Id Produit
+        </label>
+        <input class="form-control" formControlName="IdProduit" type="text">
+        <div class="alert alert-danger"
+            *ngIf="yourForm.get('IdProduit')?.invalid && (yourForm.get('IdProduit')?.touched || yourForm.get('IdProduit')?.dirty)">
+            <div *ngIf="yourForm.get('IdProduit')?.errors?.['required']">Id Produit is required!</div>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            Code
+        </label>
+        <input class="form-control" formControlName="Code" type="text">
+        <div class="alert alert-danger"
+            *ngIf="yourForm.get('Code')?.invalid && (yourForm.get('Code')?.touched || yourForm.get('Code')?.dirty)">
+            <div *ngIf="yourForm.get('Code')?.errors?.['required']">Code is required!</div>
+            <div *ngIf="yourForm.get('Code')?.errors?.['pattern']">Invalid pattern!</div>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            Libelle
+        </label>
+        <input class="form-control" formControlName="Libelle" type="text">
+        <div class="alert alert-danger"
+            *ngIf="yourForm.get('Libelle')?.invalid && (yourForm.get('Libelle')?.touched || yourForm.get('Libelle')?.dirty)">
+            <div *ngIf="yourForm.get('Libelle')?.errors?.['required']">Libelle is required!</div>
+            <div *ngIf="yourForm.get('Libelle')?.errors?.['minlength']">Libelle must be at least 3 characters long!
+            </div>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            Prix unitaire
+        </label>
+        <input class="form-control" formControlName="Prixunitaire" type="text">
+        <div class="alert alert-danger"
+            *ngIf="yourForm.get('Prixunitaire')?.invalid && (yourForm.get('Prixunitaire')?.touched || yourForm.get('Prixunitaire')?.dirty)">
+            <div *ngIf="yourForm.get('Prixunitaire')?.errors?.['required']">Prix unitaire is required!</div>
+            <div *ngIf="yourForm.get('Prixunitaire')?.errors?.['pattern']">Invalid pattern!</div>
+        </div>
+
+    </div>
+    <div
+        [hidden]="yourForm.get('IdProduit')?.errors!=null || yourForm.get('Libelle')?.errors!=null || yourForm.get('Code')?.errors!=null || yourForm.get('Prixunitaire')?.errors!=null">
+
+        <div class="mb-3">
+            <label class="form-label">
+                Id détails produit
+            </label>
+            <input class="form-control" formControlName="Iddétailsproduit" type="text">
+            <div class="alert alert-danger"
+                *ngIf="yourForm.get('Iddétailsproduit')?.invalid && (yourForm.get('Iddétailsproduit')?.touched || yourForm.get('Iddétailsproduit')?.dirty)">
+                <div *ngIf="yourForm.get('Iddétailsproduit')?.errors?.['required']">Id détails produit is required!
+                </div>
+            </div>
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">
+                Date création
+            </label>
+            <input class="form-control" formControlName="Datecréation" type="date">
+            <div class="alert alert-danger"
+                *ngIf="yourForm.get('Datecréation')?.invalid && (yourForm.get('Datecréation')?.touched || yourForm.get('Datecréation')?.dirty)">
+                <div *ngIf="yourForm.get('Datecréation')?.errors?.['required']">Date création is required!</div>
+            </div>
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">
+                Catégorie Produit
+            </label>
+            <select name="CatégorieProduit" class="form-select" formControlName="CatégorieProduit">
+                <option value="Electromenager">Electromenager</option>
+                <option value="Alimentaire">Alimentaire</option>
+                <option value="Quincaillerie">Quincaillerie</option>
+            </select>
+            <div class="alert alert-danger"
+                *ngIf="yourForm.get('CatégorieProduit')?.invalid && (yourForm.get('CatégorieProduit')?.touched || yourForm.get('CatégorieProduit')?.dirty)">
+                <div *ngIf="yourForm.get('CatégorieProduit')?.errors?.['required']">Catégorie Produit is required!</div>
+            </div>
+
+        </div>
+        <div class="mb-3" *ngIf="yourForm?.valid && (yourForm?.touched || yourForm?.dirty)">
+            <input class="btn btn-primary" type="submit" value="Ajouter" [disabled]="yourForm.invalid" />
+        </div>
+    </div>
+</form>

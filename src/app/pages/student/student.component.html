@@ -1,0 +1,50 @@
+<mat-sidenav-container autosize>
+    <mat-sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? false : true">
+        <mat-nav-list class="text-center">
+            <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <a mat-list-item>
+                <span class="entry" routerLink="./">
+                    <mat-icon>house</mat-icon>
+                    <span *ngIf="!isCollapsed">Dashboard</span>
+                </span>
+            </a>
+            <a mat-list-item>
+                <span class="entry">
+                    <mat-icon> format_list_bulleted</mat-icon>
+                    <span *ngIf="!isCollapsed">Your reservations</span>
+                </span>
+            </a>
+            <a mat-list-item routerLink="/studentdash/student/modify">
+                <span class="entry">
+                    <mat-icon>assignment_ind</mat-icon>
+                    <span *ngIf="!isCollapsed">Account information</span>
+                </span>
+            </a>
+            <a mat-list-item>
+                <span class="entry">
+                    <mat-icon> vpn_key</mat-icon>
+                    <span *ngIf="!isCollapsed">Change password</span>
+                </span>
+            </a>
+            <a mat-list-item>
+                <span class="entry">
+                    <mat-icon>info</mat-icon>
+                    <span *ngIf="!isCollapsed">FAQ</span>
+                </span>
+            </a>
+            <a mat-list-item>
+                <span class="entry">
+                    <mat-icon> phone</mat-icon>
+                    <span *ngIf="!isCollapsed">Contact Us</span>
+                </span>
+            </a>
+
+
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -15,13 +15,12 @@ import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './products/product/product.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatButtonModule} from "@angular/material/button";
-import {ToastrModule} from "ngx-toastr";
-import { StudentComponent } from './testservice/student/student.component';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatButtonModule } from "@angular/material/button";
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { StudentComponent } from './testservice/student/student.component';
     ProductComponent,
     SignInComponent,
     SignUpComponent,
-    StudentComponent,
   ],
   imports: [
     BrowserModule,
