@@ -31,10 +31,32 @@
                 <div class="m-3 text-danger" *ngIf="email.errors!['required']"> Email is required !!</div>
                 <div class="m-3 text-danger" *ngIf="email.errors!['pattern']"> Not a valid Email !!</div>
               </div>
+              <div class="mb-3"><input class="form-control" type="text" required minlength="3" pattern="[0-9]{8}" name="cin" #cin="ngModel" [(ngModel)]="user.cin" placeholder="CIN"></div>
+              <div *ngIf="cin.invalid && (cin.touched || cin.dirty)">
+                <div class="m-3 text-danger" *ngIf="cin.errors!['required']"> CIN is required !!</div>
+                <div class="m-3 text-danger" *ngIf="cin.errors!['pattern']"> CIN must contain 8 characters !!</div>
+              </div>
+              <div class="mb-3"><input class="form-control" type="text" required minlength="3" pattern="[a-zA-Z]*" name="ecole" #ecole="ngModel" [(ngModel)]="user.ecole" placeholder="Ecole"></div>
+              <div *ngIf="ecole.invalid && (ecole.touched || ecole.dirty)">
+                <div class="m-3 text-danger" *ngIf="ecole.errors!['required']"> Ecole is required !!</div>
+                <div class="m-3 text-danger" *ngIf="ecole.errors!['minlength']"> Ecole must have at least 3 characters !!</div>
+                <div class="m-3 text-danger" *ngIf="ecole.errors!['pattern']"> Ecole must only contain characters !!</div>
+              </div>
+              <div class="mb-3"><input class="form-control" type="date" required name="date" #dateNaiss="ngModel" [(ngModel)]="user.dateNaissance" placeholder="Date de naissance"></div>
+              <div *ngIf="dateNaiss.invalid && (dateNaiss.touched || dateNaiss.dirty)">
+                <div class="m-3 text-danger" *ngIf="ecole.errors!['required']"> Ecole is required !!</div>
+              </div>
               <div class="mb-3"><input class="form-control" type="password" required minlength="6" name="password" #password="ngModel" [(ngModel)]="user.password" placeholder="Password"></div>
               <div *ngIf="password.invalid && (password.touched || password.dirty)">
                 <div class="m-3 text-danger" *ngIf="password.errors!['required']"> Password is required !!</div>
-                <div class="m-3 text-danger" *ngIf="password.errors!['minlength']"> Password must have at least 6 characters !!</div>
+                <div class="m-3 text-danger" *ngIf="password.errors!['minlength']"> Password must have at least 6 numbers !!</div>
+              </div>
+              <div class="mb-3"><select class="form-control" required name="role" #role="ngModel" [(ngModel)]="user.role" >
+                <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+              </select>
+              </div>
+              <div *ngIf="role.invalid && (role.touched || role.dirty)">
+                <div class="m-3 text-danger" *ngIf="role.errors!['required']"> Ecole is required !!</div>
               </div>
               <div class="mb-3"><button class="btn btn-primary shadow d-block w-100" type="submit" (click)="onSubmit()" [disabled]="form.invalid">Sign up</button></div>
               <p class="text-muted">Already have an account?&nbsp;<a routerLink="/sign-in">Log in</a></p>

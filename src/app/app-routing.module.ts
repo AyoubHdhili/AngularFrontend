@@ -14,6 +14,7 @@ import {AuthGuard} from "./shared/services/auth/auth.guard";
 
 const routes: Routes = [
   {path:'sign-in', component: SignInComponent},
+  {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
   {path:'sign-up', component: SignUpComponent},
   {path:'user', loadChildren: () => import('./features/frontoffice/frontoffice.module').then((m) => m.FrontofficeModule)},
   {path:'admin', loadChildren: () => import('./features/backoffice/backoffice.module').then((m) => m.BackofficeModule)}

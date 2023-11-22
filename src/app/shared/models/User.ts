@@ -5,6 +5,9 @@ export class User{
   firstname!:string;
   lastname!:string;
   email!:string;
+  cin!:number;
+  ecole!:string;
+  dateNaissance!:Date;
   password!:string;
   role!:Roles;
 }

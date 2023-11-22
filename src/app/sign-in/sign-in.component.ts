@@ -28,12 +28,11 @@ export class SignInComponent {
       localStorage.setItem('userid',String(res.user.id));
       localStorage.setItem('firstname', res.user.firstname);
       localStorage.setItem('lastname', res.user.lastname);
-        console.log(res.user.role)
-      if(res.user.role === 'USER'){
+      if(res.user.role === 'ETUDIANT'){
         this.router.navigate(['/user/home']);
       }
       if(res.user.role === 'ADMIN'){
-        this.router.navigate([]);
+        this.router.navigate(['/admin/dashboard']);
       }
     },
       (err) =>{
