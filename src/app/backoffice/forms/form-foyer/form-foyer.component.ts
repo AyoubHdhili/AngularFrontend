@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FoyerService } from 'src/app/shared/services/foyerService/foyer.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { FoyerService } from 'src/app/shared/services/foyerService/foyer.service
   styleUrls: ['./form-foyer.component.scss']
 })
 export class FormFoyerComponent {
-  constructor(private _foyerService: FoyerService){}
+  constructor(private _foyerService: FoyerService,
+   private router:Router
+    ){}
   FoyerForm: FormGroup = new FormGroup({
     nomFoyer: new FormControl(
       '',
@@ -47,6 +50,7 @@ export class FormFoyerComponent {
     this._foyerService.addFoyer(this.FoyerForm.value).subscribe(
       (response) => {
         console.log('Form data sent successfully:', response);
+        this.router.navigate(['admin/gestion-foyer'])
         // Handle the response or any further logic
       },
       (error) => {
