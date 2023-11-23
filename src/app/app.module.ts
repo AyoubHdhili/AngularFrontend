@@ -27,12 +27,19 @@ import { NavbarbackComponent } from './backoffice/navbarback/navbarback.componen
 import { SidebarbackComponent } from './backoffice/sidebarback/sidebarback.component';
 import { GestionFoyerComponent } from './backoffice/gestion-foyer/gestion-foyer.component';
 import { FormFoyerComponent } from './backoffice/forms/form-foyer/form-foyer.component';
+import { GestionBlocComponent } from './backoffice/gestion-bloc/gestion-bloc.component';
+import { GestionChambreComponent } from './backoffice/gestion-chambre/gestion-chambre.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
+  
+   
+  
+   
    
 
   ],
