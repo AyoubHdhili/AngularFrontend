@@ -11,31 +11,31 @@
                 </span>
             </a>
             <a mat-list-item>
-                <span class="entry">
+                <span class="entry" routerLink="./reservations">
                     <mat-icon> format_list_bulleted</mat-icon>
                     <span *ngIf="!isCollapsed">Your reservations</span>
                 </span>
             </a>
-            <a mat-list-item routerLink="/studentdash/student/modify">
+            <a mat-list-item routerLink="./student/modify">
                 <span class="entry">
                     <mat-icon>assignment_ind</mat-icon>
                     <span *ngIf="!isCollapsed">Account information</span>
                 </span>
             </a>
             <a mat-list-item>
-                <span class="entry">
+                <span class="entry" routerLink="./changepassword">
                     <mat-icon> vpn_key</mat-icon>
                     <span *ngIf="!isCollapsed">Change password</span>
                 </span>
             </a>
             <a mat-list-item>
-                <span class="entry">
+                <span class="entry" routerLink="./faq">
                     <mat-icon>info</mat-icon>
                     <span *ngIf="!isCollapsed">FAQ</span>
                 </span>
             </a>
             <a mat-list-item>
-                <span class="entry">
+                <span class="entry" routerLink="./Contactus">
                     <mat-icon> phone</mat-icon>
                     <span *ngIf="!isCollapsed">Contact Us</span>
                 </span>
@@ -44,7 +44,7 @@
 
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="container-fluid" style="height: 100%;padding-top: 0 !important;">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

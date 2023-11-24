@@ -1,96 +1,99 @@
-<router-outlet></router-outlet>
-<form [formGroup]="yourForm" (ngSubmit)="modify()" style="width: 25%; padding-left: 5%; margin : auto;float: left;">
-    <div class="mb-3">
-        <label class="form-label">
-            Id Produit
-        </label>
-        <input class="form-control" formControlName="IdProduit" type="text">
-        <div class="alert alert-danger"
-            *ngIf="yourForm.get('IdProduit')?.invalid && (yourForm.get('IdProduit')?.touched || yourForm.get('IdProduit')?.dirty)">
-            <div *ngIf="yourForm.get('IdProduit')?.errors?.['required']">Id Produit is required!</div>
-        </div>
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label">
-            Code
-        </label>
-        <input class="form-control" formControlName="Code" type="text">
-        <div class="alert alert-danger"
-            *ngIf="yourForm.get('Code')?.invalid && (yourForm.get('Code')?.touched || yourForm.get('Code')?.dirty)">
-            <div *ngIf="yourForm.get('Code')?.errors?.['required']">Code is required!</div>
-            <div *ngIf="yourForm.get('Code')?.errors?.['pattern']">Invalid pattern!</div>
-        </div>
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label">
-            Libelle
-        </label>
-        <input class="form-control" formControlName="Libelle" type="text">
-        <div class="alert alert-danger"
-            *ngIf="yourForm.get('Libelle')?.invalid && (yourForm.get('Libelle')?.touched || yourForm.get('Libelle')?.dirty)">
-            <div *ngIf="yourForm.get('Libelle')?.errors?.['required']">Libelle is required!</div>
-            <div *ngIf="yourForm.get('Libelle')?.errors?.['minlength']">Libelle must be at least 3 characters long!
+<form [formGroup]="yourForm" (ngSubmit)="modify()" class="row" style="width: 75%;height: 100%; overflow-y:visible;">
+    <div class="col-lg-8 col-md-12" style="width: 25%;  padding-left: 5%; margin: auto;">
+        <div class="mb-3">
+            <label class="form-label">
+                ID
+            </label>
+            <input class="form-control" formControlName="idEtudiant" type="text">
+            <div class="alert alert-danger"
+                *ngIf="yourForm.get('idEtudiant')?.invalid && (yourForm.get('idEtudiant')?.touched || yourForm.get('idEtudiant')?.dirty)">
+                <div *ngIf="yourForm.get('idEtudiant')?.errors?.['required']">Id Etudiant is required!</div>
             </div>
         </div>
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label">
-            Prix unitaire
-        </label>
-        <input class="form-control" formControlName="Prixunitaire" type="text">
-        <div class="alert alert-danger"
-            *ngIf="yourForm.get('Prixunitaire')?.invalid && (yourForm.get('Prixunitaire')?.touched || yourForm.get('Prixunitaire')?.dirty)">
-            <div *ngIf="yourForm.get('Prixunitaire')?.errors?.['required']">Prix unitaire is required!</div>
-            <div *ngIf="yourForm.get('Prixunitaire')?.errors?.['pattern']">Invalid pattern!</div>
-        </div>
-
-    </div>
-    <div
-        [hidden]="yourForm.get('IdProduit')?.errors!=null || yourForm.get('Libelle')?.errors!=null || yourForm.get('Code')?.errors!=null || yourForm.get('Prixunitaire')?.errors!=null">
 
         <div class="mb-3">
             <label class="form-label">
-                Id détails produit
+                First Name
             </label>
-            <input class="form-control" formControlName="Iddétailsproduit" type="text">
+            <input class="form-control" formControlName="famname" type="text">
             <div class="alert alert-danger"
-                *ngIf="yourForm.get('Iddétailsproduit')?.invalid && (yourForm.get('Iddétailsproduit')?.touched || yourForm.get('Iddétailsproduit')?.dirty)">
-                <div *ngIf="yourForm.get('Iddétailsproduit')?.errors?.['required']">Id détails produit is required!
-                </div>
+                *ngIf="yourForm.get('famname')?.invalid && (yourForm.get('famname')?.touched || yourForm.get('famname')?.dirty)">
+                <div *ngIf="yourForm.get('famname')?.errors?.['required']">First Name is required!</div>
             </div>
-
         </div>
+
         <div class="mb-3">
             <label class="form-label">
-                Date création
+                Last Name
             </label>
-            <input class="form-control" formControlName="Datecréation" type="date">
+            <input class="form-control" formControlName="name" type="text">
             <div class="alert alert-danger"
-                *ngIf="yourForm.get('Datecréation')?.invalid && (yourForm.get('Datecréation')?.touched || yourForm.get('Datecréation')?.dirty)">
-                <div *ngIf="yourForm.get('Datecréation')?.errors?.['required']">Date création is required!</div>
+                *ngIf="yourForm.get('name')?.invalid && (yourForm.get('name')?.touched || yourForm.get('name')?.dirty)">
+                <div *ngIf="yourForm.get('name')?.errors?.['required']">Last Name is required!</div>
             </div>
-
         </div>
+
         <div class="mb-3">
             <label class="form-label">
-                Catégorie Produit
+                Date Of Birth
             </label>
-            <select name="CatégorieProduit" class="form-select" formControlName="CatégorieProduit">
-                <option value="Electromenager">Electromenager</option>
-                <option value="Alimentaire">Alimentaire</option>
-                <option value="Quincaillerie">Quincaillerie</option>
-            </select>
+            <input class="form-control" formControlName="birthdate" type="date">
             <div class="alert alert-danger"
-                *ngIf="yourForm.get('CatégorieProduit')?.invalid && (yourForm.get('CatégorieProduit')?.touched || yourForm.get('CatégorieProduit')?.dirty)">
-                <div *ngIf="yourForm.get('CatégorieProduit')?.errors?.['required']">Catégorie Produit is required!</div>
+                *ngIf="yourForm.get('birthdate')?.invalid && (yourForm.get('birthdate')?.touched || yourForm.get('birthdate')?.dirty)">
+                <div *ngIf="yourForm.get('birthdate')?.errors?.['required']">Date Of Birth is required!</div>
             </div>
+        </div>
 
+        <div class="mb-3">
+            <label class="form-label">
+                CIN
+            </label>
+            <input class="form-control" formControlName="cin" type="text">
+            <div class="alert alert-danger"
+                *ngIf="yourForm.get('cin')?.invalid && (yourForm.get('cin')?.touched || yourForm.get('cin')?.dirty)">
+                <div *ngIf="yourForm.get('cin')?.errors?.['required']">CIN is required!</div>
+            </div>
         </div>
-        <div class="mb-3" *ngIf="yourForm?.valid && (yourForm?.touched || yourForm?.dirty)">
-            <input class="btn btn-primary" type="submit" value="Ajouter" [disabled]="yourForm.invalid" />
+
+        <div class="mb-3">
+            <label class="form-label">
+                Email
+            </label>
+            <input class="form-control" formControlName="email" type="email">
+            <div class="alert alert-danger"
+                *ngIf="yourForm.get('email')?.invalid && (yourForm.get('email')?.touched || yourForm.get('email')?.dirty)">
+                <div *ngIf="yourForm.get('email')?.errors?.['required']">Email is required!</div>
+                <div *ngIf="yourForm.get('email')?.errors?.['email']">Invalid email format!</div>
+            </div>
         </div>
+
+        <div class="mb-3">
+            <label class="form-label">
+                University
+            </label>
+            <input class="form-control" formControlName="ecole" type="text">
+            <div class="alert alert-danger"
+                *ngIf="yourForm.get('ecole')?.invalid && (yourForm.get('ecole')?.touched || yourForm.get('ecole')?.dirty)">
+                <div *ngIf="yourForm.get('ecole')?.errors?.['required']">University is required!</div>
+            </div>
+        </div>
+
+        <div class="mb-3" >
+            <input class="btn btn-primary" type="submit" value="Ajouter"  />
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-12">
+        <div formArrayName="interests" style=" margin: auto; text-align-last: center;">
+            <h2>Interests</h2>
+            <div *ngFor="let interest of getInterestControls(); let i=index" class="py-1">
+                <label for="interest{{ i }}">Interest {{i+1}} : </label>
+                <input id="interest{{ i }}" type="text" [formControlName]="i" class="mx-2">
+            </div>
+        </div>
+        <div class="div-btn py-5 text-center">
+            <button (click)="addInterest()" class="btn btn-primary">Add another interest</button>
+        </div>
+
     </div>
 </form>

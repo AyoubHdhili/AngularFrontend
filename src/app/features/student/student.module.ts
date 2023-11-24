@@ -12,10 +12,11 @@ import { StudentRoutingModule } from './student-routing.module';
 import { StudentService } from 'src/app/services/student.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ModifyinfosComponent } from 'src/app/pages/student/modifyinfos/modifyinfos.component';
+import { ReservationsComponent } from 'src/app/pages/student/reservations/reservations.component';
 
 
 @NgModule({
-  declarations: [StudentComponent, ModifyinfosComponent],
+  declarations: [StudentComponent, ModifyinfosComponent,ReservationsComponent],
   imports: [
     CommonModule,
     StudentRoutingModule,

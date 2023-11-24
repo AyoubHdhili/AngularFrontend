@@ -24,11 +24,11 @@ export class StudentService {
   getAllStudents() {
     const headers = this.getHeaders();
     const options = { headers, withCredentials: true };
-    return this._http.get<Reservation[]>(this.apiUrl + 'retrieve-all-etudiants',  options );
+    return this._http.get<Etudiant[]>(this.apiUrl + 'retrieve-all-etudiants',  options );
   }
 
   getStudentbyID(idstudent: number) {
-    return this._http.get<Reservation>(`${this.apiUrl}retrieve-etudiant/${idstudent}`);
+    return this._http.get<Etudiant>(`${this.apiUrl}retrieve-etudiant/${idstudent}`);
   }
 
   addStudent(student: Etudiant): Observable<any> {
@@ -36,7 +36,7 @@ export class StudentService {
   }
 
   ModifyStudent(student: Etudiant) {
-    return this._http.put<Reservation>(`${this.apiUrl}update`, student);
+    return this._http.put<Etudiant>(`${this.apiUrl}update`, student);
   }
 
   DeleteStudent(idstudent: number): Observable<any> {
