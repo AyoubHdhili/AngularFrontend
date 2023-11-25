@@ -11,22 +11,49 @@ import { environment } from 'src/environments/environment.development';
 })
 export class ModifyinfosComponent {
 
-  id= parseInt(environment.idstudent||'0');
-  data = Etudiant;
+  id = parseInt(environment.idstudent || '-1');
+  data!: Etudiant;
   constructor(private studentService: StudentService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.fetchdata();
     this.initializeForm();
-    //this.studentService.getStudentbyID()
 
   };
 
-  // fetch data
-  fetchdata(){
+  //// fetch data and patch
+  fetchdata() {
     this.studentService.getStudentbyID(this.id).subscribe(
-      //(data) => this.data = data
+      (data) => {
+        this.data = data;
+        this.patchFormWithData();
+      }
     );
+  }
+
+  patchFormWithData() {
+    const interestsArray = this.data.interests.split(',');
+    this.yourForm.patchValue({
+      idEtudiant: this.data.idEtudiant,
+      famname: this.data.nomEt,  // Adjust the property names based on your actual data structure
+      name: this.data.prenomEt,
+      birthdate: this.data.birthDate,
+      cin: this.data.cin,
+      email: this.data.email,
+      ecole: this.data.ecole,
+      interests: interestsArray,  // Use the interests array
+    });
+
+    // Ensure the interests form array has the correct number of controls
+    const interestsFormArray = this.yourForm.get('interests') as FormArray;
+    interestsFormArray.clear(); // Clear existing controls
+    interestsArray.forEach(interest => {
+      interestsFormArray.push(this.createInterestWithValue(interest));
+    })
+  }
+  // Adjust createInterest to accept an initial value
+  createInterestWithValue(value: string): FormControl {
+    return this.formBuilder.control(value, Validators.required);
   }
 
   //// form modify
@@ -51,7 +78,6 @@ export class ModifyinfosComponent {
     console.log(this.student);
   }
 
-
   initializeForm() {
     this.yourForm = this.formBuilder.group({
       idEtudiant: ['', [Validators.required, Validators.pattern('[1-9][0-9]*')]],
@@ -64,19 +90,24 @@ export class ModifyinfosComponent {
       interests: this.formBuilder.array([this.createInterest()])
     });
   }
+  getInterestControls(): AbstractControl[] {
+    return (this.yourForm.get('interests') as FormArray).controls;
+  }
 
   createInterest(): FormControl {
     return this.formBuilder.control('', Validators.required);
-  }
-  
-  getInterestControls(): AbstractControl[] {
-    return (this.yourForm.get('interests') as FormArray).controls;
   }
 
   addInterest() {
     const interests = this.yourForm.get('interests') as FormArray;
     interests.push(this.createInterest());
   }
+
+  removeInterest(i: number) {
+    const interests = this.yourForm.get('interests') as FormArray;
+    interests.removeAt(i);
+  }
+
 
 
 

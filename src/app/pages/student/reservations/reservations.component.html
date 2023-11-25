@@ -1,1 +1,17 @@
-<p>reservations works!</p>
+<div class="row" style="width: 75%;height: 100%; overflow-y:visible;">
+    <div class="div-btn py-5 text-center">
+        <button class="btn btn-primary">Make a reservation</button>
+    </div>
+
+    <div class="col-lg-8 col-md-12" style="width: 25%;  padding-left: 5%; margin-left: auto;">
+        <div *ngFor="let interest of reservations; let i=index" class="py-1 d-flex">
+            <label for="interest{{ i }}" class="my-2">Interest {{i+1}} :</label>
+            <input id="interest{{ i }}" type="text" [formControlName]="i" class="mx-2" style="height: 2.5rem;">
+            <div class="div-btn text-center">
+                <button class="btn btn-primary">Remove interest</button>
+            </div>        
+        </div>
+
+    </div>
+
+</div>
