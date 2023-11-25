@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AuthService} from "../shared/services/auth/auth.service";
+import {AuthService} from "../shared/auth/auth.service";
 import {User} from "../shared/models/User";
 import {NgToastService} from "ng-angular-popup";
 import {Router} from "@angular/router";
@@ -28,12 +28,11 @@ export class SignInComponent {
       localStorage.setItem('userid',String(res.user.id));
       localStorage.setItem('firstname', res.user.firstname);
       localStorage.setItem('lastname', res.user.lastname);
-        console.log(res.user.role)
-      if(res.user.role === 'USER'){
-        this.router.navigate(['/home']);
+      if(res.user.role === 'ETUDIANT'){
+        this.router.navigate(['/user/home']);
       }
       if(res.user.role === 'ADMIN'){
-        this.router.navigate([]);
+        this.router.navigate(['/admin/dashboard']);
       }
     },
       (err) =>{
