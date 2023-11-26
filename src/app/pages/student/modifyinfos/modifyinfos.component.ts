@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { StudentService } from 'src/app/services/student.service';
+import { StudentService } from 'src/app/frontoffice/services/student.service';
 import { Etudiant } from 'src/app/shared/models/etudiant';
 import { environment } from 'src/environments/environment.development';
 

@@ -12,6 +12,15 @@ import {NavbarComponent} from "../../frontoffice/navbar/navbar.component";
 import {ProductComponent} from "../../products/product/product.component";
 import { FrontofficeRoutingModule } from './frontoffice-routing.module';
 import {HomeComponent} from "../../frontoffice/home/home.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { StudentComponent } from 'src/app/pages/student/student.component';
+import { ModifyinfosComponent } from 'src/app/pages/student/modifyinfos/modifyinfos.component';
+import { ReservationsComponent } from 'src/app/pages/student/reservations/reservations.component';
 
 
 
@@ -27,11 +36,21 @@ import {HomeComponent} from "../../frontoffice/home/home.component";
     TestimonialsComponent,
     NavbarComponent,
     ProductComponent,
-    HomeComponent
+    HomeComponent,
+    StudentComponent,
+    ModifyinfosComponent,
+    ReservationsComponent,
   ],
   imports: [
     CommonModule,
-    FrontofficeRoutingModule
+    FrontofficeRoutingModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class FrontofficeModule { }

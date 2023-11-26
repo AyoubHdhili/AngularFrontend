@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { StudentService } from 'src/app/services/student.service';
+import { StudentService } from 'src/app/frontoffice/services/student.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 

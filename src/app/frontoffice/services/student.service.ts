@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { Reservation } from '../shared/models/reservation';
 import { Observable } from 'rxjs';
-import { Etudiant } from '../shared/models/etudiant';
+import { Etudiant } from 'src/app/shared/models/etudiant';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +27,10 @@ export class StudentService {
   }
 
   getStudentbyID(idstudent: number) {
-    return this._http.get<Etudiant>(`${this.apiUrl}retrieve-etudiant/${idstudent}`);
+    const headers = this.getHeaders();
+    const options = { headers, withCredentials: true };
+
+    return this._http.get<Etudiant>(`${this.apiUrl}retrieve-etudiant/${idstudent}`, options);
   }
 
   addStudent(student: Etudiant): Observable<any> {

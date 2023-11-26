@@ -9,14 +9,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { StudentRoutingModule } from './student-routing.module';
-import { StudentService } from 'src/app/services/student.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ModifyinfosComponent } from 'src/app/pages/student/modifyinfos/modifyinfos.component';
 import { ReservationsComponent } from 'src/app/pages/student/reservations/reservations.component';
 
 
 @NgModule({
-  declarations: [StudentComponent, ModifyinfosComponent,ReservationsComponent],
+  declarations: [],
   imports: [
     CommonModule,
     StudentRoutingModule,
@@ -29,6 +28,6 @@ import { ReservationsComponent } from 'src/app/pages/student/reservations/reserv
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [StudentService,BreakpointObserver],
+  providers: [BreakpointObserver],
 })
 export class StudentModule { }

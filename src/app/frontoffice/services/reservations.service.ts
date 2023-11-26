@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { Reservation } from '../shared/models/reservation';
+import { Reservation } from 'src/app/shared/models/reservation';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 

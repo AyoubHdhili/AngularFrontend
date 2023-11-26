@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReservationsService } from 'src/app/services/reservations.service';
+import { ReservationsService } from 'src/app/frontoffice/services/reservations.service';
 import { Reservation } from 'src/app/shared/models/reservation';
 import { environment } from 'src/environments/environment.development';
 

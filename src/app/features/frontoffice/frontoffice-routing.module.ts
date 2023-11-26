@@ -9,6 +9,9 @@ import {ProductsComponent} from "../../products/products.component";
 import {PricingComponent} from "../../frontoffice/pricing/pricing.component";
 import {ContactsComponent} from "../../frontoffice/contacts/contacts.component";
 import {HomeComponent} from "../../frontoffice/home/home.component";
+import { StudentComponent } from 'src/app/pages/student/student.component';
+import { ModifyinfosComponent } from 'src/app/pages/student/modifyinfos/modifyinfos.component';
+import { ReservationsComponent } from 'src/app/pages/student/reservations/reservations.component';
 const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'contacts', component:ContactsComponent},
@@ -18,6 +21,12 @@ const routes: Routes = [
   {path:'services', component:ServicesComponent, canActivate:[AuthGuard]},
   {path:'team', component:TeamComponent},
   {path:'testimonials', component:TestimonialsComponent},
+  {
+    path: 'student', component: StudentComponent, children: [
+      {path : 'modify', component : ModifyinfosComponent},
+      {path : 'reservations' , component : ReservationsComponent}
+    ]
+  },
 ];
 
 @NgModule({

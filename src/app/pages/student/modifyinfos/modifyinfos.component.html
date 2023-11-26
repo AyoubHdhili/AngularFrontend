@@ -87,7 +87,7 @@
         <div formArrayName="interests" style=" margin: auto; text-align-last: center;">
             <h2 style="padding-bottom: 5%;">Interests</h2>
             <div *ngFor="let interest of getInterestControls(); let i=index" class="py-1 d-flex">
-                <label for="interest{{ i }}" class="my-2">Interest {{i+1}} :</label>
+                <label for="interest{{ i }}" class="my-2">Interest {{i+1}}</label>
                 <input id="interest{{ i }}" type="text" [formControlName]="i" class="mx-2" style="height: 2.5rem;">
                 <div class="div-btn text-center">
                     <button (click)="removeInterest(i)" class="btn btn-primary">Remove interest</button>
