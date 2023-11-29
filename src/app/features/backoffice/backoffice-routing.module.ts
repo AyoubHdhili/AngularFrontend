@@ -9,7 +9,7 @@ const routes: Routes = [
   {path:'dashboard', component:BackofficeComponent },
   {path:'gestion-foyer', component:GestionFoyerComponent},
   {path:'add-foyer', component:FormFoyerComponent},
-
+  {path:'gestion-user', loadChildren: () => import('../user/user.module').then((m) => m.UserModule)}
 ];
 
 @NgModule({

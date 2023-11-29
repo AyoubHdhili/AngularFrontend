@@ -18,6 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     GestionFoyerComponent,
     FormFoyerComponent
   ],
+  exports: [
+    BackofficeComponent
+  ],
   imports: [
     CommonModule,
     BackofficeRoutingModule,
