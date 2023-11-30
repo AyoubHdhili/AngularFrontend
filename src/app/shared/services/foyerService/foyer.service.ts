@@ -10,27 +10,28 @@ import { Observable } from 'rxjs';
 export class FoyerService {
 
   apiUrl = environment.baseUrl+'foyer/';
+  httpOptions = {};
   list: Foyer[] = []
-  constructor(private _http: HttpClient) {}
-
-
-  fetchFoyer() {
-    return this._http.get(this.apiUrl+'retrieve-all-foyer');
-  }
-
-  removeFoyer(id: number) {
-    return this._http.delete(this.apiUrl + 'delete-foyer/'+id);
-  }
-
-  addFoyer(data: any): Observable<any> {
-    const httpOptions = {
+  constructor(private _http: HttpClient) {
+    this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`
-        // Add any other headers if needed
       })
     };
+  }
 
-    return this._http.post<any>('http://localhost:8089/app/foyer/add-foyer', data, httpOptions);
+
+  fetchFoyer() {
+    return this._http.get(this.apiUrl+'retrieve-all-foyer', this.httpOptions);
+  }
+
+  removeFoyer(id: number) {
+    return this._http.delete(this.apiUrl + 'delete-foyer/'+id, this.httpOptions);
+  }
+
+  addFoyer(data: any): Observable<any> {
+
+    return this._http.post<any>('http://localhost:8089/app/foyer/add-foyer', data, this.httpOptions);
   }
 }
