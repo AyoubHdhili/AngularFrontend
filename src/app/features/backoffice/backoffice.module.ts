@@ -7,7 +7,9 @@ import { SidebarbackComponent } from 'src/app/backoffice/sidebarback/sidebarback
 import { GestionFoyerComponent } from 'src/app/backoffice/gestion-foyer/gestion-foyer.component';
 import { FormFoyerComponent } from 'src/app/backoffice/forms/form-foyer/form-foyer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormUniversiteComponent } from 'src/app/backoffice/forms/form-universite/form-universite.component';
+import { GestionUniversiteComponent } from 'src/app/backoffice/gestion-universite/gestion-universite.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarbackComponent,
     SidebarbackComponent,
     GestionFoyerComponent,
-    FormFoyerComponent
+    FormFoyerComponent,
+    FormUniversiteComponent,
+    GestionUniversiteComponent
   ],
   imports: [
     CommonModule,
