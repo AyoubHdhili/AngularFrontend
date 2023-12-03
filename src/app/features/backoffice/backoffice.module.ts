@@ -10,7 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormUniversiteComponent } from 'src/app/backoffice/forms/form-universite/form-universite.component';
 import { GestionUniversiteComponent } from 'src/app/backoffice/gestion-universite/gestion-universite.component';
-
+import {NgApexchartsModule} from "ng-apexcharts";
+import {StatistiqueComponent} from "../../backoffice/statistique/statistique.component";
+import { NgChartsModule } from 'ng2-charts';
+import {ChartjsComponent} from "@coreui/angular-chartjs";
 
 @NgModule({
   declarations: [
@@ -20,13 +23,18 @@ import { GestionUniversiteComponent } from 'src/app/backoffice/gestion-universit
     GestionFoyerComponent,
     FormFoyerComponent,
     FormUniversiteComponent,
-    GestionUniversiteComponent
+    GestionUniversiteComponent,
+    StatistiqueComponent
   ],
   imports: [
     CommonModule,
     BackofficeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgApexchartsModule,
+    NgChartsModule,
+
+
   ]
 })
 export class BackofficeModule { }

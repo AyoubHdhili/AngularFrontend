@@ -1,11 +1,14 @@
 <app-backoffice>
-  
-   
-  
+
+  <div class="search-bar">
+    <input class="" type="text" placeholder="Search by university name" [(ngModel)]="searchTerm" (input)="search()" />
+
+  </div>
+
 
     <div class="table-container">
         <table class="table">
-          
+
             <thead>
               <tr>
                 <th scope="col">id</th>
@@ -16,7 +19,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let u of listUniversite">
+            <tr *ngFor="let u of filteredUniversities">
                 <td>{{u.idUniversite}}</td>
                 <td>{{u.nomUniversite}}</td>
                 <td>{{u.adresse}}</td>
@@ -36,13 +39,13 @@
                 </td>
               </tr>
             </tbody>
-          </table>   
-          
-          
-      </div>
-      
+          </table>
 
-        
+
+      </div>
+
+
+
             <button [routerLink]="['/admin/add-universite']" class="btn btn-primary">Ajouter Universite</button>
-        
+
     </app-backoffice>

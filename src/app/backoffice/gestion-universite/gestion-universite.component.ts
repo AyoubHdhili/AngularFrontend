@@ -10,26 +10,44 @@ import { UniversiteService } from 'src/app/shared/services/universiteService/uni
 })
 export class GestionUniversiteComponent implements OnInit {
   listUniversite: Universite[] = [];
+  filteredUniversities: any[] = [];
+  searchTerm: string = '';
   constructor(
     private http: HttpClient,
     private _universiteService:UniversiteService
     ){};
 
   ngOnInit(): void {
-  
+
     this._universiteService.fetchUniversites().subscribe({
-      next: (data) => (this.listUniversite = data as Universite[]),
+      next: (data) => {
+        this.listUniversite = data as Universite[];
+        this.filteredUniversities = this.listUniversite;
+      },
+
+
+
+
+
+
+
       error: (err) => console.log(err),
     });
   }
 
-  deleteUniversite(id:number) 
+  deleteUniversite(id:number)
 {
   this._universiteService.removeUniversite(id).subscribe({
     next: () => this.listUniversite = this.listUniversite.filter((universite) => universite.idUniversite !== id),
- 
+
     error: (error:any) => console.log(error)
 
   }) ;
 }
+
+  search(): void {
+    this.filteredUniversities = this.listUniversite.filter((u) =>
+      u.nomUniversite.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
 }

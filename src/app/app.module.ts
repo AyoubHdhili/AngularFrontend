@@ -29,14 +29,17 @@ import { GestionFoyerComponent } from './backoffice/gestion-foyer/gestion-foyer.
 import { FormFoyerComponent } from './backoffice/forms/form-foyer/form-foyer.component';
 import { FormUniversiteComponent } from './backoffice/forms/form-universite/form-universite.component';
 import { GestionUniversiteComponent } from './backoffice/gestion-universite/gestion-universite.component';
+import { StatistiqueComponent } from './backoffice/statistique/statistique.component';
+import { NgApexchartsModule } from "ng-apexcharts";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
-   
-   
+
+
 
   ],
   imports: [
@@ -49,6 +52,7 @@ import { GestionUniversiteComponent } from './backoffice/gestion-universite/gest
     MatButtonModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
