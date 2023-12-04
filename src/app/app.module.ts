@@ -14,6 +14,8 @@ import {ToastrModule} from "ngx-toastr";
 import { GestionUserComponent } from './backoffice/gestion-user/gestion-user.component';
 import {BackofficeModule} from "./features/backoffice/backoffice.module";
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CodeVerificationComponent } from './code-verification/code-verification.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     SignUpComponent,
     GestionUserComponent,
     ResetPasswordComponent,
+    CodeVerificationComponent,
+    NewPasswordComponent,
 
   ],
   imports: [

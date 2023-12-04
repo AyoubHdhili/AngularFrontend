@@ -31,7 +31,7 @@
                 <div class="m-3 text-danger" *ngIf="email.errors!['required']"> Email is required !!</div>
                 <div class="m-3 text-danger" *ngIf="email.errors!['pattern']"> Not a valid Email !!</div>
               </div>
-              <div class="mb-3"><input class="form-control" type="text" required minlength="3" pattern="[0-9]{8}" name="cin" #cin="ngModel" [(ngModel)]="user.cin" placeholder="CIN"></div>
+              <div class="mb-3"><input class="form-control" type="text" required minlength="8" pattern="[0-9]{8}" name="cin" #cin="ngModel" [(ngModel)]="user.cin" placeholder="CIN"></div>
               <div *ngIf="cin.invalid && (cin.touched || cin.dirty)">
                 <div class="m-3 text-danger" *ngIf="cin.errors!['required']"> CIN is required !!</div>
                 <div class="m-3 text-danger" *ngIf="cin.errors!['pattern']"> CIN must contain 8 characters !!</div>

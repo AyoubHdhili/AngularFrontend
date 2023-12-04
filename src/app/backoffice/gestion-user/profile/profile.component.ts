@@ -25,8 +25,8 @@ export class ProfileComponent implements OnInit{
   }
 
   update() {
-  this.userService.updateUser(this.id,this.user).subscribe((res) => {
-    console.log("works")
-  })
+    this.userService.updateUser(this.id,this.user).subscribe((res) =>{
+      console.log(res);
+    })
   }
 }

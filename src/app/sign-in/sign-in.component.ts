@@ -17,9 +17,7 @@ export class SignInComponent {
   }
 
   onSubmit() {
-    console.log(this.user);
     this.authService.Authenticate(this.user).subscribe((res) => {
-        console.log(res);
       this.toast.success("welcome back", `Logged in successfully !`,{
           timeOut: 5000,
           positionClass:'toast-top-center'
@@ -38,7 +36,7 @@ export class SignInComponent {
       (err) =>{
         console.log(typeof err.status);
         if (err.status == 400){
-          this.toast.error("Please Sign Up !!", "Invalid Mail Adress",{
+          this.toast.error("Verify the email !!", "No user associated to this email",{
             timeOut:5000,
             positionClass:'toast-top-center'
           })

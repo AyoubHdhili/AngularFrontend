@@ -27,6 +27,8 @@ export class UserService {
   }
 
   updateUser(id:number, user:User){
-    return this.http.put(this.endpoint+'update-user/'+id, user, this.httpOptions);
+    return this.http.put(this.endpoint+'update-user/'+id, {firstname:user.firstname,lastname:user.lastname,email:user.email,
+      dateNaissance:user.dateNaissance,ecole:user.ecole}, this.httpOptions);
   }
+
 }
