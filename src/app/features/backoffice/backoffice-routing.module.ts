@@ -14,10 +14,10 @@ const routes: Routes = [
   {path:'gestion-foyer', component:GestionFoyerComponent},
   {path:'add-foyer', component:FormFoyerComponent},
   { path: 'update/:id', component: FormFoyerComponent },
+  {path: 'update-universite/:id', component: FormUniversiteComponent},
   {path:'add-universite', component: FormUniversiteComponent},
   {path:'gestion-universite', component: GestionUniversiteComponent},
-  {path : "statistique", component: StatistiqueComponent}
-
+  {path : "statistique", component: StatistiqueComponent},
 
 ];
 

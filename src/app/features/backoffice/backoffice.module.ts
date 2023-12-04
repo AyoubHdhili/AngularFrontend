@@ -14,6 +14,7 @@ import {NgApexchartsModule} from "ng-apexcharts";
 import {StatistiqueComponent} from "../../backoffice/statistique/statistique.component";
 import { NgChartsModule } from 'ng2-charts';
 import {ChartjsComponent} from "@coreui/angular-chartjs";
+import {QRCodeModule} from "angularx-qrcode";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ChartjsComponent} from "@coreui/angular-chartjs";
     FormFoyerComponent,
     FormUniversiteComponent,
     GestionUniversiteComponent,
-    StatistiqueComponent
+    StatistiqueComponent,
+
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import {ChartjsComponent} from "@coreui/angular-chartjs";
     ReactiveFormsModule,
     NgApexchartsModule,
     NgChartsModule,
+    QRCodeModule,
 
 
   ]
