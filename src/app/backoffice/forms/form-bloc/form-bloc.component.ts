@@ -3,6 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Foyer } from 'src/app/shared/models/foyer';
 import { BlocService } from 'src/app/shared/services/blocService/bloc.service';
 import { FoyerService } from 'src/app/shared/services/foyerService/foyer.service';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Bloc } from 'src/app/shared/models/bloc';
 @Component({
   selector: 'app-form-bloc',
   templateUrl: './form-bloc.component.html',
@@ -10,9 +13,11 @@ import { FoyerService } from 'src/app/shared/services/foyerService/foyer.service
 })
 export class FormBlocComponent  implements OnInit {
 
-  foyerIds: any[] = [];
+  foyer: any[] = [];
+  idBloc: number=0; 
+  bloc:Bloc=new Bloc() ;  
 
-  constructor (private _BlocService: BlocService,private _FoyerService : FoyerService) {}
+  constructor (private _BlocService: BlocService,private _FoyerService : FoyerService, private router: Router,private route:  ActivatedRoute) {}
   BlocForm: FormGroup = new FormGroup({
     nomBloc: new FormControl(
       '',
@@ -29,15 +34,32 @@ export class FormBlocComponent  implements OnInit {
       ]
     ),
    
-    idFoyer: new FormControl('', Validators.required),
+    foyer: new FormControl(
+
+
+      ),
 
  
   });
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.idBloc = params['id'];
+      this._BlocService.getBlocById(this.idBloc).subscribe(
+        (res)=>
+          {
+          
+            this.BlocForm.patchValue(res as Bloc) ; 
+ 
+          }
+ 
+      )
+   });
+
+
     this._FoyerService.fetchFoyer().subscribe({
 
-    next:(data)=>(this.foyerIds= data as Foyer[]) ,
+    next:(data)=>(this.foyer= data as Foyer[]) ,
     error:(err)=>console.log(err) ,
     }
     );
@@ -51,27 +73,41 @@ export class FormBlocComponent  implements OnInit {
   get capaciteBloc() {
     return this.BlocForm.controls['capaciteBloc'];
   }
-  get idFoyer() {
-    return this.BlocForm.controls['idFoyer'];
-  }
  
   
-  
   add(f: FormGroup) {
-     
-    console.log(f.value)
-    console.log("function works !")
-    this._BlocService.addBloc(this.BlocForm.value).subscribe(
-      (response) => {
-        console.log('Form data sent successfully:', response);
-        // Handle the response or any further logic
-      },
-      (error) => {
-        console.error('Error sending form data:', error);
-        // Handle errors accordingly
-      }
-    );
-  }
-  
 
+
+    const formValue = {...this.BlocForm.value };
+    delete formValue.foyer;
+    console.log("Value of this.idBloc:", this.idBloc);
+    if (this.idBloc == undefined)
+    {
+   
+      console.log("Attempting to add a new bloc"); 
+    this._BlocService.addBloc(formValue).subscribe({
+      next: () => 
+     
+      this._BlocService.affecterBlocToFoyer(this.BlocForm.value.nomBloc,this.BlocForm.value.foyer).subscribe({
+        next: () => 
+       
+  
+         this.router.navigate(['/admin/gestion-bloc']),
+         
+      })
+    });
+  }
+  else {
+    console.log("Attempting to update bloc with ID:", this.idBloc); 
+    console.log(this.idBloc)
+   this._BlocService.updateBloc(this.idBloc,formValue).subscribe({
+     next: () => 
+     this.router.navigate(['/admin/gestion-bloc']),
+   
+     
+   });
+   
+  }
+
+  }
 }

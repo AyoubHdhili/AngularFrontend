@@ -2,7 +2,7 @@
     <form  [formGroup]="BlocForm" (ngSubmit)="add(BlocForm)">
         <div class="mb-3">
             <label >nom Bloc</label>
-        <input  class="form-control" type="text" formControlName="nomBloc">
+        <input  class="form-control" type="text"  [value]="" formControlName="nomBloc">
         <div class="alert alert-danger"
               *ngIf="nomBloc.invalid && (nomBloc.touched || nomBloc.dirty)">
                       <div *ngIf="nomBloc.errors!['required']">nomBloc is required !</div>
@@ -21,9 +21,11 @@
         
         
               <div>
-                <label for="idFoyer">Choose Foyer ID</label>
-                <select formControlName="idFoyer" id="idFoyer">
-                  <option *ngFor="let id of foyerIds" [value]="id.idFoyer">{{ id.nomFoyer}}</option>
+                <br>
+                <label>Foyer</label>
+                <select formControlName="foyer" class="form-select">
+                  <option value="" disabled>Select Foyer</option>
+                  <option *ngFor="let f of foyer" [value]="f.idFoyer">{{ f.nomFoyer }}</option>
                 </select>
               </div>
               

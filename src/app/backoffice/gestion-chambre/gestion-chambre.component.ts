@@ -2,6 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Chambre } from 'src/app/shared/models/chambre';
 import { ChambreService } from 'src/app/shared/services/chambreService/chambre.service';
 import { ActivatedRoute } from '@angular/router';
+import { BlocService } from 'src/app/shared/services/blocService/bloc.service';
+import { Bloc } from 'src/app/shared/models/bloc';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gestion-chambre',
@@ -10,7 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GestionChambreComponent  implements OnInit,OnDestroy {
   chambres:Chambre[]=[];
-  constructor( private route: ActivatedRoute,private _ChambreService: ChambreService, ){}
+  blocIds: any[] = [];
+  constructor( private router: Router,private _ChambreService: ChambreService,private _BlocService: BlocService ){}
   ngOnDestroy(): void {
     
 
@@ -22,6 +26,16 @@ export class GestionChambreComponent  implements OnInit,OnDestroy {
        complete:()=>console.log("complete")
 
     }) ;
+    this._BlocService.fetchBloc().subscribe({
+
+      next:(data)=>(this.blocIds= data as Bloc[]) ,
+      error:(err)=>console.log(err) ,
+      }
+      );
+  }
+  stringifyObject(obj: any): string {
+    console.log('Chambres with bloc:', this.chambres); 
+    return JSON.stringify(obj);
   }
   DeleteChambre(id:number) 
 {
@@ -31,5 +45,8 @@ export class GestionChambreComponent  implements OnInit,OnDestroy {
     error: (error:any) => console.log(error)
   
   }) ;  
+}
+editChambre(idChambre: number) {
+  this.router.navigate(['/admin/add-chambre', idChambre]);
 }
 }

@@ -11,7 +11,8 @@ import {  FormBlocComponent} from 'src/app/backoffice/forms/form-bloc/form-bloc.
 import { FormChambreComponent } from 'src/app/backoffice/forms/form-chambre/form-chambre.component';
 import {GestionChambreComponent} from 'src/app/backoffice/gestion-chambre/gestion-chambre.component'  ; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { StatistiqueChambreComponent } from 'src/app/backoffice/statistique-chambres/statistique_chambre.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 
@@ -25,12 +26,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     GestionChambreComponent,
     FormBlocComponent,
     FormChambreComponent,
+    StatistiqueChambreComponent,
+    
     FormFoyerComponent
   ],
   imports: [
     CommonModule,
     BackofficeRoutingModule,
     FormsModule,
+    NgApexchartsModule,
     ReactiveFormsModule,
   ]
 })

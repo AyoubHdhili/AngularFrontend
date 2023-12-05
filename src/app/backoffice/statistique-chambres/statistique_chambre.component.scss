@@ -1,4 +1,9 @@
-.table {
+#chart {
+    max-width: 650px;
+    margin: 35px auto;
+    background-color: rgb(255, 255, 255);
+  }
+  .table {
       
     --bs-table-accent-bg: white;
 
@@ -68,9 +73,8 @@ body {
     max-width: 800px; /* Adjust maximum width as needed */
     overflow: auto;
   }
-  .add-bloc-button,
-  .add-bloc-button2 {
-    margin-left: 10px; /* Adjust as needed */
+  .add-bloc-button {
+    margin-left: 52% ;
     display: inline-block;
     padding: 10px 20px;
     border: 2px solid rgb(246, 249, 250);
@@ -79,10 +83,10 @@ body {
     background-color: rgb(251, 252, 253);
   }
   
-  .add-bloc-button:hover .button-text,
-  .add-bloc-button2:hover .button-text {
+  .add-bloc-button:hover .button-text {
     color: rgb(59, 27, 174); /* Text color on hover */
   }
+  
   .button-text {
     margin: 0; /* Reset default margins */
     color: #db8d34; /* Initial text color */
@@ -120,6 +124,9 @@ body {
   td {
     padding: 10px; /* Adjust padding as needed */
     text-align: left;
+  }
+  ::selection {
+    color: rgb(206, 0, 0); /* Set the desired text color */
   }
   
   /* Optional: Apply styles for smaller screens */

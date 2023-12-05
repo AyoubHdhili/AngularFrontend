@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './frontoffice/contacts/contacts.component';
@@ -21,14 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
 import {ToastrModule} from "ngx-toastr";
-import { FrontofficeComponent } from './frontoffice/frontoffice.component';
-import { BackofficeComponent } from './backoffice/backoffice.component';
-import { NavbarbackComponent } from './backoffice/navbarback/navbarback.component';
-import { SidebarbackComponent } from './backoffice/sidebarback/sidebarback.component';
-import { GestionFoyerComponent } from './backoffice/gestion-foyer/gestion-foyer.component';
-import { FormFoyerComponent } from './backoffice/forms/form-foyer/form-foyer.component';
-import { GestionBlocComponent } from './backoffice/gestion-bloc/gestion-bloc.component';
-import { GestionChambreComponent } from './backoffice/gestion-chambre/gestion-chambre.component';
+
+
+
 
 
 @NgModule({
@@ -36,6 +32,9 @@ import { GestionChambreComponent } from './backoffice/gestion-chambre/gestion-ch
     AppComponent,
     SignInComponent,
     SignUpComponent,
+    
+
+  
   
    
   
@@ -53,6 +52,7 @@ import { GestionChambreComponent } from './backoffice/gestion-chambre/gestion-ch
     MatButtonModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

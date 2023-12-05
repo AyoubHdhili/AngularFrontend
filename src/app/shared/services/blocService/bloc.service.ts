@@ -10,10 +10,18 @@ import { Foyer } from '../../models/foyer';
 })
 export class BlocService {
 
-
+  httpOptions = {};
   apiUrl = environment.baseUrl+'bloc/';
   apiUrl2 = environment.baseUrl+'foyer/';
-  constructor(private _http: HttpClient) { }
+  apiUrl3 = environment.baseUrl+'chambre/';
+  constructor(private _http: HttpClient) { 
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    };
+  }
 
   getFoyerOptions(): Observable<string[]> {
     return this._http.get<string[]>(this.apiUrl2+'ids'); // Assuming it returns an array of numbers (foyer IDs)
@@ -30,7 +38,9 @@ export class BlocService {
   {
     return this._http.delete (this.apiUrl+"delete-bloc/"+id) ; 
   }
-
+  affecterBlocToFoyer(nomBloc:String,idFoyer:number){
+    return this._http.put(this.apiUrl+'affecter-bloc-to-foyer/' + nomBloc +'/' + idFoyer,null);
+  }
   addBloc(data: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -41,6 +51,17 @@ export class BlocService {
     };
 
     return this._http.post<any>('http://localhost:8089/app/bloc/add-bloc', data, httpOptions);
+  }
+  getBlocById (id:number)
+  {
+    return this._http.get(this.apiUrl+'retrieve-bloc/'+id) ;
+
+  }
+  updateBloc(id:number, bloc:Bloc){
+    return this._http.put(this.apiUrl+'updateBloc/'+id, {nomBloc:bloc.nomBloc,capaciteBloc:bloc.capaciteBloc}, this.httpOptions);
+  }
+  getBlocStat(){
+    return this._http.get(this.apiUrl3+"typesChambresParBloc",this.httpOptions);
   }
 
 }

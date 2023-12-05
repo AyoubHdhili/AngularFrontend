@@ -4,6 +4,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChambreService } from 'src/app/shared/services/chambreService/chambre.service';
 import { BlocService } from 'src/app/shared/services/blocService/bloc.service';
 import { Bloc } from 'src/app/shared/models/bloc';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Chambre } from 'src/app/shared/models/chambre';
 @Component({
   selector: 'app-form-chambre',
   templateUrl: './form-chambre.component.html',
@@ -11,8 +14,9 @@ import { Bloc } from 'src/app/shared/models/bloc';
 })
 export class FormChambreComponent implements OnInit {
   BlocIds: any[] = [];
-
-  constructor (private _ChambreService:ChambreService,private _BlocService:BlocService) {}
+  idChambre: number=0; 
+  chambre:Chambre=new Chambre() ;  
+  constructor (private _ChambreService:ChambreService,private _BlocService:BlocService, private router: Router,private route:  ActivatedRoute) {}
 
   ChambreForm: FormGroup = new FormGroup({
     numeroChambre: new FormControl(
@@ -35,6 +39,19 @@ export class FormChambreComponent implements OnInit {
  
   });
 ngOnInit(): void {
+
+  this.route.params.subscribe(params => {
+     this.idChambre = params['id'];
+     this._ChambreService.getChambreById(this.idChambre).subscribe(
+       (res)=>
+         {
+         
+           this.ChambreForm.patchValue(res as Chambre) ; 
+
+         }
+
+     )
+  });
   this._BlocService.fetchBloc().subscribe({
 
     next:(data)=>(this.BlocIds= data as Bloc[]) ,
@@ -42,6 +59,7 @@ ngOnInit(): void {
     }
     );
 }
+
 get chambreTypes() {
   return Object.values(TypeChambre);
 }
@@ -58,19 +76,38 @@ get idBloc() {
 
 
 add(f: FormGroup) {
+
+  const formValue = {...this.ChambreForm.value };
+  delete formValue.idBloc;
+
+   if (this.idChambre == undefined)
+   {
+    
+  this._ChambreService.addChambre(formValue).subscribe({
+    
+    next: () => 
+   
+    this._ChambreService.affecterChambretoBloc(this.ChambreForm.value.numeroChambre,this.ChambreForm.value.idBloc).subscribe({
+      next: () => 
      
-  console.log(f.value)
-  console.log("function works !")
-  this._ChambreService.addChambre(this.ChambreForm.value).subscribe(
-    (response) => {
-      console.log('Form data sent successfully:', response);
-      // Handle the response or any further logic
-    },
-    (error) => {
-      console.error('Error sending form data:', error);
-      // Handle errors accordingly
-    }
-  );
+
+       this.router.navigate(['/admin/gestion-chambre']),
+       
+    })
+    
+  });
+   }
+   else{
+   
+    this._ChambreService.updateChambre(this.idChambre,formValue).subscribe({
+      next: () => 
+      this.router.navigate(['/admin/gestion-chambre']),
+    
+      
+    });
+    
+   }
+
 }
 
 

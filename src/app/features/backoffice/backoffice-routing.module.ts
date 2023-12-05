@@ -9,6 +9,7 @@ import { FormFoyerComponent } from 'src/app/backoffice/forms/form-foyer/form-foy
 import { GestionChambreComponent } from 'src/app/backoffice/gestion-chambre/gestion-chambre.component';
 import { FormBlocComponent } from 'src/app/backoffice/forms/form-bloc/form-bloc.component';
 import { FormChambreComponent } from 'src/app/backoffice/forms/form-chambre/form-chambre.component';
+import { StatistiqueChambreComponent } from 'src/app/backoffice/statistique-chambres/statistique_chambre.component';
 const routes: Routes = [
   {path:'dashboard', component:BackofficeComponent },
   {path:'gestion-foyer', component:GestionFoyerComponent},
@@ -16,8 +17,10 @@ const routes: Routes = [
   {path:'gestion-chambre', component:GestionChambreComponent},
   {path:'add-foyer', component:FormFoyerComponent},
   {path:'add-bloc', component:FormBlocComponent},
+  {path:'add-bloc/:id', component:FormBlocComponent},
   {path:'add-chambre', component:FormChambreComponent},
   {path:'add-chambre/:id', component:FormChambreComponent},
+  {path:'stat', component:StatistiqueChambreComponent},
 
 ];
 

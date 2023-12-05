@@ -4,6 +4,8 @@ import { Bloc } from 'src/app/shared/models/bloc';
 import { BlocService } from 'src/app/shared/services/blocService/bloc.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { FoyerService } from 'src/app/shared/services/foyerService/foyer.service';
+import { Foyer } from 'src/app/shared/models/foyer';
 
 @Component({
   selector: 'app-gestion-bloc',
@@ -11,9 +13,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./gestion-bloc.component.scss']
 })
 export class GestionBlocComponent implements OnInit,OnDestroy{
-
+  foyerIds: any[] = [];
   blocs:Bloc[]=[];
-  constructor(private router: Router,private _BlocService: BlocService) { }
+  constructor(private router: Router,private _BlocService: BlocService,private _FoyerService:FoyerService ) { }
   ngOnDestroy(): void {
     
 
@@ -27,6 +29,12 @@ export class GestionBlocComponent implements OnInit,OnDestroy{
         complete:()=>console.log("complete")
 
      }) ;
+     this._FoyerService.fetchFoyer().subscribe({
+
+      next:(data)=>(this.foyerIds= data as Foyer[]) ,
+      error:(err)=>console.log(err) ,
+      }
+      );
 }
 
 deleteBloc(id:number) 
@@ -37,6 +45,9 @@ deleteBloc(id:number)
     error: (error:any) => console.log(error)
   
   }) ;  
+}
+editBloc(idBloc: number) {
+  this.router.navigate(['/admin/add-bloc', idBloc]);
 }
 
 }
