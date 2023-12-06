@@ -12,7 +12,8 @@ import {NavbarComponent} from "../../frontoffice/navbar/navbar.component";
 import {ProductComponent} from "../../products/product/product.component";
 import { FrontofficeRoutingModule } from './frontoffice-routing.module';
 import {HomeComponent} from "../../frontoffice/home/home.component";
-
+import { GestionBlocfrontComponent } from 'src/app/frontoffice/gestion-blocfront/gestion-blocfront.component';
+import { GestionChambrefrontComponent } from 'src/app/frontoffice/gestion-chambrefront/gestion-chambrefront.component';
 
 
 @NgModule({
@@ -27,6 +28,8 @@ import {HomeComponent} from "../../frontoffice/home/home.component";
     TestimonialsComponent,
     NavbarComponent,
     ProductComponent,
+    GestionBlocfrontComponent,
+    GestionChambrefrontComponent,
     HomeComponent
   ],
   imports: [

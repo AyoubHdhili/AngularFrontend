@@ -21,22 +21,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
 import {ToastrModule} from "ngx-toastr";
-import { FrontofficeComponent } from './frontoffice/frontoffice.component';
-import { BackofficeComponent } from './backoffice/backoffice.component';
-import { NavbarbackComponent } from './backoffice/navbarback/navbarback.component';
-import { SidebarbackComponent } from './backoffice/sidebarback/sidebarback.component';
-import { GestionFoyerComponent } from './backoffice/gestion-foyer/gestion-foyer.component';
-import { FormFoyerComponent } from './backoffice/forms/form-foyer/form-foyer.component';
-import { FormUniversiteComponent } from './backoffice/forms/form-universite/form-universite.component';
-import { GestionUniversiteComponent } from './backoffice/gestion-universite/gestion-universite.component';
-
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
-   
-   
+
 
   ],
   imports: [
