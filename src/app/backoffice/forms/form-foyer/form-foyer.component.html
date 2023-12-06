@@ -1,5 +1,5 @@
 <app-backoffice>
-    <form  [formGroup]="FoyerForm" (ngSubmit)="add(FoyerForm)">
+    <form  [formGroup]="FoyerForm" (ngSubmit)="add()">
         <div class="mb-3">
             <label >nom Foyer</label>
         <input  class="form-control" type="text" formControlName="nomFoyer">
@@ -18,14 +18,22 @@
                       <div *ngIf="capaciteFoyer.errors!['minlength']">capaciteFoyer must have at least 3 characters !</div>
                       <div *ngIf="capaciteFoyer.errors!['pattern']">capaciteFoyer invalid !</div>
               </div>
-        
-      
-      
-        
+
+
+
+
       </div>
-      <div class="mb-3">
+
+
+      <div *ngIf="updating == false" class="mb-3">
         <input type="submit" value="Ajouter" class="btn btn-primary" >
       </div>
+
+      <div *ngIf="updating == true" class="mb-3">
+        <input type="submit" value="Modifier" class="btn btn-primary" >
+      </div>
+
+
       <div class="mb-3 ">
         <button [routerLink]="['/admin/gestion-foyer']" class="btn btn-secondary">Liste Foyers</button>
                 </div>

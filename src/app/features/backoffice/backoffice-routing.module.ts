@@ -13,6 +13,7 @@ import { StatistiqueChambreComponent } from 'src/app/backoffice/statistique-cham
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormUniversiteComponent } from 'src/app/backoffice/forms/form-universite/form-universite.component';
 import { GestionUniversiteComponent } from 'src/app/backoffice/gestion-universite/gestion-universite.component';
+import {StatistiqueComponent} from "../../backoffice/statistique/statistique.component";
 const routes: Routes = [
   {path:'dashboard', component:BackofficeComponent },
   {path:'gestion-foyer', component:GestionFoyerComponent},
@@ -24,14 +25,19 @@ const routes: Routes = [
   {path:'add-chambre', component:FormChambreComponent},
   {path:'add-chambre/:id', component:FormChambreComponent},
   {path:'stat', component:StatistiqueChambreComponent},
+  { path: 'update/:id', component: FormFoyerComponent },
+  {path: 'update-universite/:id', component: FormUniversiteComponent},
   {path:'add-universite', component: FormUniversiteComponent},
-  {path:'gestion-universite', component: GestionUniversiteComponent}
-
+  {path:'gestion-universite', component: GestionUniversiteComponent},
+  {path : "statistique", component: StatistiqueComponent},
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes),
+
+
+  ],
   exports: [RouterModule]
 })
 export class BackofficeRoutingModule { }

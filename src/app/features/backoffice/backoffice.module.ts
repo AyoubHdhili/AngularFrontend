@@ -16,8 +16,10 @@ import { FormUniversiteComponent } from 'src/app/backoffice/forms/form-universit
 import { GestionUniversiteComponent } from 'src/app/backoffice/gestion-universite/gestion-universite.component';
 import { StatistiqueChambreComponent } from 'src/app/backoffice/statistique-chambres/statistique_chambre.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
-
+import {StatistiqueComponent} from "../../backoffice/statistique/statistique.component";
+import { NgChartsModule } from 'ng2-charts';
+import {ChartjsComponent} from "@coreui/angular-chartjs";
+import {QRCodeModule} from "angularx-qrcode";
 
 @NgModule({
   declarations: [
@@ -34,15 +36,19 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     FormBlocComponent,
     FormChambreComponent,
     StatistiqueChambreComponent,
-
+    StatistiqueComponent,
     FormFoyerComponent
   ],
   imports: [
     CommonModule,
     BackofficeRoutingModule,
     FormsModule,
-    NgApexchartsModule,
     ReactiveFormsModule,
+    NgApexchartsModule,
+    NgChartsModule,
+    QRCodeModule,
+
+
   ]
 })
 export class BackofficeModule { }
