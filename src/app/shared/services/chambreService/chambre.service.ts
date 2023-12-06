@@ -18,23 +18,23 @@ export class ChambreService {
     };
    }
   affecterChambretoBloc(numeroChambre:number,idBloc:number){
-    return this._http.put(this.apiUrl+'affecter-bloc-to-chambre/' + numeroChambre +'/' + idBloc,null);
+    return this._http.put(this.apiUrl+'affecter-bloc-to-chambre/' + numeroChambre +'/' + idBloc,null, this.httpOptions);
   }
   getChambres()
   {
-   return this._http.get(this.apiUrl+'get-all-chambres') ;
+   return this._http.get(this.apiUrl+'get-all-chambres', this.httpOptions) ;
   }
   getChambres2(idBloc: number): Observable<Chambre[]> {
-    return this._http.get<Chambre[]>(this.apiUrl + 'byBlocId/' + idBloc);
+    return this._http.get<Chambre[]>(this.apiUrl + 'byBlocId/' + idBloc, this.httpOptions);
   }
   getChambreById (id:number)
   {
-    return this._http.get(this.apiUrl+'retrieve-chambre/'+id) ;
+    return this._http.get(this.apiUrl+'retrieve-chambre/'+id, this.httpOptions) ;
 
   }
 
   DeleteChambre(id: number) {
-    return this._http.delete(this.apiUrl + 'delete-chambre/'+id);
+    return this._http.delete(this.apiUrl + 'delete-chambre/'+id, this.httpOptions);
   }
 
   addChambre(data: any): Observable<any> {

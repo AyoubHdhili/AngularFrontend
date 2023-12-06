@@ -27,19 +27,19 @@ export class BlocService {
     return this._http.get<string[]>(this.apiUrl2+'ids'); // Assuming it returns an array of numbers (foyer IDs)
   }
   fetchBloc() {
-    return this._http.get(this.apiUrl+'retrieve-all-bloc');
+    return this._http.get(this.apiUrl+'retrieve-all-bloc',this.httpOptions);
   }
   getBlocs()
   {
-   return this._http.get(this.apiUrl+'retrieve-all-bloc') ;
+   return this._http.get(this.apiUrl+'retrieve-all-bloc',this.httpOptions) ;
   }
 
   deleteBloc(id:number)
   {
-    return this._http.delete (this.apiUrl+"delete-bloc/"+id) ; 
+    return this._http.delete (this.apiUrl+"delete-bloc/"+id,this.httpOptions) ; 
   }
   affecterBlocToFoyer(nomBloc:String,idFoyer:number){
-    return this._http.put(this.apiUrl+'affecter-bloc-to-foyer/' + nomBloc +'/' + idFoyer,null);
+    return this._http.put(this.apiUrl+'affecter-bloc-to-foyer/' + nomBloc +'/' + idFoyer,null,this.httpOptions);
   }
   addBloc(data: any): Observable<any> {
     const httpOptions = {
