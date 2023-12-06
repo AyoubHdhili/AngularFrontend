@@ -14,7 +14,7 @@ export class BlocService {
   apiUrl = environment.baseUrl+'bloc/';
   apiUrl2 = environment.baseUrl+'foyer/';
   apiUrl3 = environment.baseUrl+'chambre/';
-  constructor(private _http: HttpClient) { 
+  constructor(private _http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export class BlocService {
 
   deleteBloc(id:number)
   {
-    return this._http.delete (this.apiUrl+"delete-bloc/"+id,this.httpOptions) ; 
+    return this._http.delete (this.apiUrl+"delete-bloc/"+id,this.httpOptions) ;
   }
   affecterBlocToFoyer(nomBloc:String,idFoyer:number){
     return this._http.put(this.apiUrl+'affecter-bloc-to-foyer/' + nomBloc +'/' + idFoyer,null,this.httpOptions);
@@ -46,7 +46,7 @@ export class BlocService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`
-    
+
       })
     };
 
@@ -54,7 +54,7 @@ export class BlocService {
   }
   getBlocById (id:number)
   {
-    return this._http.get(this.apiUrl+'retrieve-bloc/'+id) ;
+    return this._http.get(this.apiUrl+'retrieve-bloc/'+id, this.httpOptions) ;
 
   }
   updateBloc(id:number, bloc:Bloc){
