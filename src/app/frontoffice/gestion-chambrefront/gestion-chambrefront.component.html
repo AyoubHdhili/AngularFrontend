@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <h5 class="card-title">le numeroChambre est :{{c.numeroChambre}}</h5>
                         <p class="card-text">Le type de Chambre est : {{c.typeC}}</p>
-                        <a href="#" class="btn btn-primary">Reserver</a>
+                        <a (click)="makereservation(c.idChambre)" class="btn btn-primary">Reserver</a>
                     </div>
                 </div>
             </div>
