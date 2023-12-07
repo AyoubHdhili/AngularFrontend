@@ -4,7 +4,7 @@ export class Etudiant {
     idEtudiant!: number;
     nomEt!: string;
     prenomEt!: string;
-    birthDate!: Date;
+    dateNaissance!: Date;
     cin!: number;
     email!: string;
     ecole!: string;

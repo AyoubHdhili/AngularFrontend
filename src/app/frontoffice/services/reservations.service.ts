@@ -18,31 +18,31 @@ export class ReservationsService {
       'Authorization': `Bearer ${this.token}`,
     });
   }
+  headers = this.getHeaders();
+  options = { headers: this.headers };
 
 
   getAllReservations() {
-    return this._http.get<Reservation[]>(this.apiUrl + 'retrieve-all-reservation');
+    return this._http.get<Reservation[]>(this.apiUrl + 'retrieve-all-reservation', this.options);
   }
 
   getReservationbyID(idreser: number) {
-    return this._http.get<Reservation>(`${this.apiUrl}retrieve-reservation/${idreser}`);
+    return this._http.get<Reservation>(`${this.apiUrl}retrieve-reservation/${idreser}`, this.options);
   }
 
   getReservationbyStudent(studentid: number) {
-    const headers = this.getHeaders();
-    const options = { headers, withCredentials: true };
-    return this._http.get<Reservation[]>(`${this.apiUrl}reservationsbystudent/${studentid}`,options);
+    return this._http.get<Reservation[]>(`${this.apiUrl}reservationsbystudent/${studentid}`, this.options);
   }
   reserveachambre(idetudiant: number, idchambre: number, reservation: Reservation): Observable<any> {
-    return this._http.put(`${this.apiUrl}${idetudiant}/${idchambre}`, reservation);
+    return this._http.put(`${this.apiUrl}${idetudiant}/${idchambre}`, reservation, this.options);
   }
 
   ModifyReservation(reservation: Reservation) {
-    return this._http.put<Reservation>(`${this.apiUrl}update`, reservation);
+    return this._http.put<Reservation>(`${this.apiUrl}update`, reservation, this.options);
   }
 
   DeleteReservation(idreser: number): Observable<any> {
-    return this._http.delete(`${this.apiUrl}delete-reservation${idreser}`);
+    return this._http.delete(`${this.apiUrl}delete-reservation${idreser}`, this.options);
   }
 
 

@@ -12,6 +12,7 @@ import {HomeComponent} from "../../frontoffice/home/home.component";
 import { StudentComponent } from 'src/app/pages/student/student.component';
 import { ModifyinfosComponent } from 'src/app/pages/student/modifyinfos/modifyinfos.component';
 import { ReservationsComponent } from 'src/app/pages/student/reservations/reservations.component';
+import { AvailableroomsComponent } from 'src/app/pages/student/reservations/availablerooms/availablerooms.component';
 const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'contacts', component:ContactsComponent},
@@ -24,7 +25,9 @@ const routes: Routes = [
   {
     path: 'student', component: StudentComponent, children: [
       {path : 'modify', component : ModifyinfosComponent},
-      {path : 'reservations' , component : ReservationsComponent}
+      {path : 'reservations' , component : ReservationsComponent, children: [
+        {path : 'availablerooms', component : AvailableroomsComponent }
+      ]}
     ]
   },
 ];

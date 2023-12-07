@@ -1,11 +1,11 @@
-<mat-sidenav-container autosize>
+<mat-sidenav-container autosize style="min-height: 100vh;">
     <mat-sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? false : true">
         <mat-nav-list class="text-center">
             <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
                 <mat-icon>menu</mat-icon>
             </button>
             <a mat-list-item>
-                <span class="entry" routerLink="./">
+                <span class="entry" routerLink="../home">
                     <mat-icon>house</mat-icon>
                     <span *ngIf="!isCollapsed">Dashboard</span>
                 </span>

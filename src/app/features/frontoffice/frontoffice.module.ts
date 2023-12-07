@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { StudentComponent } from 'src/app/pages/student/student.component';
 import { ModifyinfosComponent } from 'src/app/pages/student/modifyinfos/modifyinfos.component';
 import { ReservationsComponent } from 'src/app/pages/student/reservations/reservations.component';
+import { AvailableroomsComponent } from '../../pages/student/reservations/availablerooms/availablerooms.component';
 
 
 
@@ -40,6 +41,7 @@ import { ReservationsComponent } from 'src/app/pages/student/reservations/reserv
     StudentComponent,
     ModifyinfosComponent,
     ReservationsComponent,
+    AvailableroomsComponent,
   ],
   imports: [
     CommonModule,

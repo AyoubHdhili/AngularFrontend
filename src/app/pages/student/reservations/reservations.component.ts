@@ -16,12 +16,11 @@ export class ReservationsComponent {
   constructor(private reservationsService: ReservationsService) { }
 
   ngOnInit(): void {
-    this.fetchdata();
-
+    this.fetchstudentreservations();
   };
 
   //// fetch data and patch
-  fetchdata() {
+  fetchstudentreservations() {
     this.reservationsService.getReservationbyStudent(this.id).subscribe(
       (reservations) => {
         this.reservations = reservations;
@@ -29,8 +28,8 @@ export class ReservationsComponent {
     );
   }
 
-  makereservation(idstudent : number,idchambre :number,reservation : Reservation){
-    this.reservationsService.reserveachambre(idstudent,idchambre,reservation);
+  makereservation(idstudent: number, idchambre: number, reservation: Reservation) {
+    this.reservationsService.reserveachambre(idstudent, idchambre, reservation);
   }
 
 }

@@ -16,28 +16,28 @@ export class ModifyinfosComponent {
   constructor(private studentService: StudentService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.fetchdata();
-    this.initializeForm();
-
-  };
-
-  //// fetch data and patch
-  fetchdata() {
     this.studentService.getStudentbyID(this.id).subscribe(
       (data) => {
         this.data = data;
+        console.log(data)
         this.patchFormWithData();
       }
     );
-  }
+    this.initializeForm();
+  };
 
+  ////  patch data 
   patchFormWithData() {
-    const interestsArray = this.data.interests.split(',');
+    const birthDate = this.data.dateNaissance ? new Date(this.data.dateNaissance) : null;
+    const formattedDate = birthDate
+      ? `${birthDate.getDate()}/${birthDate.getMonth() + 1}/${birthDate.getFullYear()}`
+      : null;
+    const interestsArray = this.data.interests?.split(',');
     this.yourForm.patchValue({
       idEtudiant: this.data.idEtudiant,
       famname: this.data.nomEt,  // Adjust the property names based on your actual data structure
       name: this.data.prenomEt,
-      birthdate: this.data.birthDate,
+      birthdate: formattedDate,
       cin: this.data.cin,
       email: this.data.email,
       ecole: this.data.ecole,
@@ -47,9 +47,9 @@ export class ModifyinfosComponent {
     // Ensure the interests form array has the correct number of controls
     const interestsFormArray = this.yourForm.get('interests') as FormArray;
     interestsFormArray.clear(); // Clear existing controls
-    interestsArray.forEach(interest => {
+    interestsArray != undefined ? interestsArray.forEach(interest => {
       interestsFormArray.push(this.createInterestWithValue(interest));
-    })
+    }) : undefined;
   }
   // Adjust createInterest to accept an initial value
   createInterestWithValue(value: string): FormControl {
@@ -61,21 +61,30 @@ export class ModifyinfosComponent {
   student!: Etudiant;
 
   modify() {
+    const validInterestsArray: string = this.yourForm.value.interests.filter((interest: string) => interest.trim() !== '').join(',');
     const student: Etudiant = {
       idEtudiant: this.yourForm.value.idEtudiant,
-      nomEt: this.yourForm.value.nomEt,
-      prenomEt: this.yourForm.value.prenomEt,
-      birthDate: this.yourForm.value.birthDate,
+      nomEt: this.yourForm.value.famname,
+      prenomEt: this.yourForm.value.name,
+      dateNaissance: this.data.dateNaissance,
       cin: this.yourForm.value.cin,
       email: this.yourForm.value.email,
       ecole: this.yourForm.value.ecole,
       reservations: this.yourForm.value.reservations,
       schoolperformance: this.yourForm.value.schoolperformance,
-      interests: this.yourForm.value.interests,
+      interests: validInterestsArray,
     };
 
-    this.studentService.ModifyStudent(student);
-    console.log(this.student);
+    this.studentService.ModifyStudent(student).subscribe(
+      (response) => {
+        // Handle successful modification, if needed
+        console.log(response);
+      },
+      (error) => {
+        // Handle error, if needed
+        console.error(error);
+      }
+    );
   }
 
   initializeForm() {
