@@ -28,6 +28,6 @@ export class AuthService {
   }
 
   changePassword(email : string, currentPassword: string, newPassword: string, confirmationPassword: string){
-    return this.http.put(this.endpoint+'/change-password',{email: email, currentPassword: currentPassword, newPassword: newPassword, confirmationPassword: confirmationPassword})
+    return this.http.put(this.endpoint+'/reset-password',{email: email, currentPassword: currentPassword, newPassword: newPassword, confirmationPassword: confirmationPassword})
   }
 }

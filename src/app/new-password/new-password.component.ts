@@ -30,7 +30,7 @@ export class NewPasswordComponent {
       this.router.navigate(['sign-in']);
     },
       (err) =>{
-        this.toast.error("Please Verify current password !!", "Incorrect Password",{
+        this.toast.error("Password Recently used !!", "Choose an other Password",{
           timeOut:5000,
           positionClass:'toast-top-center'
         })
