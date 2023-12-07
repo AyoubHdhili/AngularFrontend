@@ -23,6 +23,8 @@ import { ModifyinfosComponent } from 'src/app/pages/student/modifyinfos/modifyin
 import { ReservationsComponent } from 'src/app/pages/student/reservations/reservations.component';
 import { AvailableroomsComponent } from '../../pages/student/reservations/availablerooms/availablerooms.component';
 
+import { GestionBlocfrontComponent } from 'src/app/frontoffice/gestion-blocfront/gestion-blocfront.component';
+import { GestionChambrefrontComponent } from 'src/app/frontoffice/gestion-chambrefront/gestion-chambrefront.component';
 
 
 @NgModule({
@@ -42,6 +44,9 @@ import { AvailableroomsComponent } from '../../pages/student/reservations/availa
     ModifyinfosComponent,
     ReservationsComponent,
     AvailableroomsComponent,
+    GestionBlocfrontComponent,
+    GestionChambrefrontComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

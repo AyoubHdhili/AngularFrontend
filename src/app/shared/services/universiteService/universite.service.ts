@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Universite } from '../../models/universite';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Foyer} from "../../models/foyer";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,19 @@ export class UniversiteService {
 
   fetchUniversites() {
     return this._http.get(this.apiUrl+'retrieve-all-universite', this.httpOptions);
+  }
+  fetchUniversiteById(id:number){
+    return this._http.get(this.apiUrl+'get-universite-by-id/'+id,this.httpOptions);
+  }
+
+  updateUniversite(universite: Universite, id: number) {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization',`Bearer ${localStorage.getItem('token')}`);
+    const options = {
+      headers: headers
+    };
+    return this._http.put(this.apiUrl + "update-universite/"+id, {nomUniversite:universite.nomUniversite,adresse:universite.adresse},options);
   }
   removeUniversite(id: number) {
     return this._http.delete(this.apiUrl + 'delete-universite/'+id, this.httpOptions);

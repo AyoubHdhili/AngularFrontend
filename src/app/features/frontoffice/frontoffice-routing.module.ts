@@ -13,6 +13,8 @@ import { StudentComponent } from 'src/app/pages/student/student.component';
 import { ModifyinfosComponent } from 'src/app/pages/student/modifyinfos/modifyinfos.component';
 import { ReservationsComponent } from 'src/app/pages/student/reservations/reservations.component';
 import { AvailableroomsComponent } from 'src/app/pages/student/reservations/availablerooms/availablerooms.component';
+import { GestionBlocfrontComponent } from 'src/app/frontoffice/gestion-blocfront/gestion-blocfront.component';
+import { GestionChambrefrontComponent } from 'src/app/frontoffice/gestion-chambrefront/gestion-chambrefront.component';
 const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'contacts', component:ContactsComponent},
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path:'products', component:ProductsComponent, canActivate:[AuthGuard]},
   {path:'projects', component:ProjectsComponent, canActivate:[AuthGuard]},
   {path:'services', component:ServicesComponent, canActivate:[AuthGuard]},
+  {path:'bloc',component:GestionBlocfrontComponent},
+  {path:'bloc/:idBloc/chambre',component:GestionChambrefrontComponent},
   {path:'team', component:TeamComponent},
   {path:'testimonials', component:TestimonialsComponent},
   {
