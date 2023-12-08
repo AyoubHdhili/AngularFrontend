@@ -6,5 +6,5 @@ export class Reservation {
     anneeReservation!: Date;
     estValide!: boolean;
     etudiants!: Etudiant[];
-    chambre!: Chambre[];
+    chambre!: Chambre;
 }

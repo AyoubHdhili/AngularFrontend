@@ -70,7 +70,7 @@ export class GestionChambrefrontComponent implements OnInit {
           },
           complete: () => {
             this.reservationInProgress = false;
-            this.router.navigate(['/about']);
+            this.router.navigate(['/user/student/reservations']);
           },
         });
     

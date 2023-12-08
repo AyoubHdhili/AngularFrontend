@@ -4,16 +4,6 @@
     </div>
     <router-outlet></router-outlet>
 
-    <div class="col-lg-8 col-md-12" style="width: 25%;  padding-left: 5%; margin-left: auto;">
-        <div *ngFor="let reservation of reservations; let i=index" class="py-1 d-flex">
-            <label for="reservation{{ i }}" class="my-2">reservation {{i+1}} :</label>
-            <input id="reservation{{ i }}" type="text" [formControlName]="i" class="mx-2" style="height: 2.5rem;">
-            <div class="div-btn text-center">
-                <button class="btn btn-primary">Remove reservation</button>
-            </div>
-        </div>
-    </div>
-
     <div class="container" style="margin-top: 25px;">
         <div class="row">
             <ng-container *ngFor="let r of reservations">
@@ -22,7 +12,8 @@
                         <img src="https://i.imgur.com/7hFlq1t.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">reservation ID :{{r.idReservation}}</h5>
-                            <p class="card-text">Room : {{r.chambre}}</p>
+                            <p class="card-text">Room : {{r.chambre.numeroChambre}}</p>
+                            <p class="card-text">Room Type : {{r.chambre.typeC}}</p>
                         </div>
                     </div>
                 </div>

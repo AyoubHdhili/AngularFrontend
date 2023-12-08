@@ -16,6 +16,7 @@ export class ReservationsService {
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Authorization': `Bearer ${this.token}`,
+      'Content-Type': 'application/json',
     });
   }
   headers = this.getHeaders();
