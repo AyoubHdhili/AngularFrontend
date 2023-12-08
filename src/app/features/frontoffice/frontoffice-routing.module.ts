@@ -23,7 +23,9 @@ const routes: Routes = [
   {path:'projects', component:ProjectsComponent, canActivate:[AuthGuard]},
   {path:'services', component:ServicesComponent, canActivate:[AuthGuard]},
   {path:'bloc',component:GestionBlocfrontComponent},
-  {path:'bloc/:idBloc/chambre',component:GestionChambrefrontComponent},
+  {path:'bloc/:idBloc/chambre',component:GestionChambrefrontComponent, children: [
+    {path : 'reservations', component : ReservationsComponent }
+  ]},
   {path:'team', component:TeamComponent},
   {path:'testimonials', component:TestimonialsComponent},
   {

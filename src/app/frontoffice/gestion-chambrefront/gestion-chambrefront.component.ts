@@ -48,9 +48,8 @@ export class GestionChambrefrontComponent implements OnInit {
 
   openReservationDialog(numeroChambre: number): void {
     if (this.reservationInProgress) {
-      return; // Don't proceed if a reservation is already in progress
+      return;
     }
-  
     const dialogRef = this.dialog.open(ReservationDialogComponent, {
       width: '25%',
     });
@@ -70,7 +69,7 @@ export class GestionChambrefrontComponent implements OnInit {
           },
           complete: () => {
             this.reservationInProgress = false;
-            this.router.navigate(['/user/student/reservations']);
+            //this.router.navigate(['/user/student/reservations']);
           },
         });
     

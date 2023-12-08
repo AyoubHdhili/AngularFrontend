@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ReservationsService } from 'src/app/frontoffice/services/reservations.service';
 import { Reservation } from 'src/app/shared/models/reservation';
 import { environment } from 'src/environments/environment.development';
@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment.development';
   styleUrls: ['./reservations.component.scss']
 })
 export class ReservationsComponent {
+  @Input() reload!: boolean;
 
   id = parseInt(environment.idstudent || '-1');
   reservations!: Reservation[];
@@ -18,6 +19,11 @@ export class ReservationsComponent {
   ngOnInit(): void {
     this.fetchstudentreservations();
   };
+
+  ngOnChanges() {
+    console.log(this.reload);
+    this.fetchstudentreservations();
+  }  
 
   //// fetch data and patch
   fetchstudentreservations() {
