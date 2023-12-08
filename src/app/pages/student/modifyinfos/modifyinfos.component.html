@@ -37,10 +37,10 @@
             <label class="form-label">
                 Date Of Birth
             </label>
-            <input class="form-control" formControlName="birthdate" type="date">
+            <input class="form-control" formControlName="dateNaissance" type="date">
             <div class="alert alert-danger"
-                *ngIf="yourForm.get('birthdate')?.invalid && (yourForm.get('birthdate')?.touched || yourForm.get('birthdate')?.dirty)">
-                <div *ngIf="yourForm.get('birthdate')?.errors?.['required']">Date Of Birth is required!</div>
+                *ngIf="yourForm.get('dateNaissance')?.invalid && (yourForm.get('dateNaissance')?.touched || yourForm.get('dateNaissance')?.dirty)">
+                <div *ngIf="yourForm.get('dateNaissance')?.errors?.['required']">Date Of Birth is required!</div>
             </div>
         </div>
 

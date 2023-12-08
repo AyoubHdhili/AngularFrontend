@@ -22,9 +22,15 @@ import { StudentComponent } from 'src/app/pages/student/student.component';
 import { ModifyinfosComponent } from 'src/app/pages/student/modifyinfos/modifyinfos.component';
 import { ReservationsComponent } from 'src/app/pages/student/reservations/reservations.component';
 import { AvailableroomsComponent } from '../../pages/student/reservations/availablerooms/availablerooms.component';
-
+import { ReservationDialogComponent } from 'src/app/pages/student/reservations/reservation-dialog/reservation-dialog.component';
 import { GestionBlocfrontComponent } from 'src/app/frontoffice/gestion-blocfront/gestion-blocfront.component';
 import { GestionChambrefrontComponent } from 'src/app/frontoffice/gestion-chambrefront/gestion-chambrefront.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepicker } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'; // Example for MatNativeDateModule
 
 
 @NgModule({
@@ -46,6 +52,7 @@ import { GestionChambrefrontComponent } from 'src/app/frontoffice/gestion-chambr
     AvailableroomsComponent,
     GestionBlocfrontComponent,
     GestionChambrefrontComponent,
+    ReservationDialogComponent,
     HomeComponent
   ],
   imports: [
@@ -58,6 +65,13 @@ import { GestionChambrefrontComponent } from 'src/app/frontoffice/gestion-chambr
     MatListModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatIconModule,
+    MatNativeDateModule,
   ]
 })
 export class FrontofficeModule { }

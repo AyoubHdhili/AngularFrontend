@@ -30,18 +30,18 @@ export class ModifyinfosComponent {
   patchFormWithData() {
     const birthDate = this.data.dateNaissance ? new Date(this.data.dateNaissance) : null;
     const formattedDate = birthDate
-      ? `${birthDate.getDate()}/${birthDate.getMonth() + 1}/${birthDate.getFullYear()}`
+      ? `${birthDate.getFullYear()}-${(birthDate.getMonth() + 1).toString().padStart(2, '0')}-${birthDate.getDate().toString().padStart(2, '0')}`
       : null;
     const interestsArray = this.data.interests?.split(',');
     this.yourForm.patchValue({
       idEtudiant: this.data.idEtudiant,
-      famname: this.data.nomEt,  // Adjust the property names based on your actual data structure
+      famname: this.data.nomEt,  
       name: this.data.prenomEt,
-      birthdate: formattedDate,
+      dateNaissance: formattedDate,
       cin: this.data.cin,
       email: this.data.email,
       ecole: this.data.ecole,
-      interests: interestsArray,  // Use the interests array
+      interests: interestsArray,
     });
 
     // Ensure the interests form array has the correct number of controls
@@ -62,11 +62,12 @@ export class ModifyinfosComponent {
 
   modify() {
     const validInterestsArray: string = this.yourForm.value.interests.filter((interest: string) => interest.trim() !== '').join(',');
+    const formattedDate = this.data.dateNaissance ? new Date(this.data.dateNaissance).toISOString().split('T')[0] : null;
     const student: Etudiant = {
       idEtudiant: this.yourForm.value.idEtudiant,
       nomEt: this.yourForm.value.famname,
       prenomEt: this.yourForm.value.name,
-      dateNaissance: this.data.dateNaissance,
+      dateNaissance: this.yourForm.value.dateNaissance,
       cin: this.yourForm.value.cin,
       email: this.yourForm.value.email,
       ecole: this.yourForm.value.ecole,
@@ -92,7 +93,7 @@ export class ModifyinfosComponent {
       idEtudiant: ['', [Validators.required, Validators.pattern('[1-9][0-9]*')]],
       famname: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
       name: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
-      birthdate: ['', [Validators.required]],
+      dateNaissance: ['', [Validators.required]],
       cin: ['', [Validators.required, Validators.minLength(3), Validators.pattern('[0-9]{8}')]],
       email: ['', Validators.required],
       ecole: ['', [Validators.required]],

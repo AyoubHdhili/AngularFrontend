@@ -34,7 +34,7 @@ export class ReservationsService {
     return this._http.get<Reservation[]>(`${this.apiUrl}reservationsbystudent/${studentid}`, this.options);
   }
   reserveachambre(idetudiant: number, idchambre: number, reservation: Reservation): Observable<any> {
-    return this._http.put(`${this.apiUrl}${idetudiant}/${idchambre}`, reservation, this.options);
+    return this._http.put(`${this.apiUrl}newreserv/${idetudiant}/${idchambre}`, reservation, this.options);
   }
 
   ModifyReservation(reservation: Reservation) {
