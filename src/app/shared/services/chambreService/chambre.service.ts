@@ -52,4 +52,9 @@ export class ChambreService {
   updateChambre(id:number, chambre:Chambre){
     return this._http.put(this.apiUrl+'updateChambre/'+id, {numeroChambre:chambre.numeroChambre,typeC:chambre.typeC}, this.httpOptions);
   }
+  getnombreChambreParBloc(idBloc:number){
+
+return this._http.get(this.apiUrl+'nombrechambresparbloc/'+idBloc,this.httpOptions) ;
+
+  }
 }

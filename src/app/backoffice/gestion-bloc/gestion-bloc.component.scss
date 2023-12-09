@@ -12,6 +12,9 @@
     size: 1cm;
 
   }
+  .red-text {
+    color: red;
+  }
 
   .edit-button {
     background: none;
@@ -88,6 +91,25 @@ body {
     color: #db8d34; /* Initial text color */
     transition: color 0.3s; /* Transition text color */
   }
+  
+  .download-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid rgb(246, 249, 250);
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: rgb(251, 252, 253);
+    cursor: pointer;
+    color: #db8d34;
+    transition: background-color 0.3s, color 0.3s;
+    margin-left: 10px;
+  
+    /* Additional hover style */
+    &:hover {
+      color: rgb(59, 27, 174);
+    }
+  }
+ 
   
   
   /* Your existing delete-button and other styles */

@@ -54,7 +54,7 @@ export class BlocService {
   }
   getBlocById (id:number)
   {
-    return this._http.get(this.apiUrl+'retrieve-bloc/'+id) ;
+    return this._http.get(this.apiUrl+'retrieve-bloc/'+id, this.httpOptions) ;
 
   }
   updateBloc(id:number, bloc:Bloc){
@@ -62,6 +62,16 @@ export class BlocService {
   }
   getBlocStat(){
     return this._http.get(this.apiUrl3+"typesChambresParBloc",this.httpOptions);
+  }
+
+  pdfBlocChambre(): Observable<Blob> {
+    return this._http.get(this.apiUrl3 + 'generate-pdf', {
+      responseType: 'blob', 
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    });
   }
 
 }
