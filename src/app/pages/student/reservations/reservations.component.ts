@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ReservationsService } from 'src/app/frontoffice/services/reservations.service';
 import { Reservation } from 'src/app/shared/models/reservation';
 import { environment } from 'src/environments/environment.development';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reservations',
@@ -14,16 +15,27 @@ export class ReservationsComponent {
   id = parseInt(environment.idstudent || '-1');
   reservations!: Reservation[];
   reservation!: Reservation;
-  constructor(private reservationsService: ReservationsService) { }
+  idstud!: number;
+  idreserv!: number;
+  code!: string;
+  constructor(private route: ActivatedRoute, private reservationsService: ReservationsService) { }
 
   ngOnInit(): void {
     this.fetchstudentreservations();
+    this.route.params.subscribe(params => {
+      this.idstud = params['idstud'];
+      this.idreserv = params['idreserv'];
+      this.code = params['code'];
+    });
+    console.log(this.idstud)
+    if (this.code == null) this.reservationsService.validate(this.idstud, this.idreserv, this.code);
+    else this.getassignedtoreservation();
   };
 
   ngOnChanges() {
     console.log(this.reload);
     this.fetchstudentreservations();
-  }  
+  }
 
   //// fetch data and patch
   fetchstudentreservations() {
@@ -33,9 +45,18 @@ export class ReservationsComponent {
       }
     );
   }
-
+  validate() {
+    this.reservationsService.validate(this.idstud, this.idreserv, this.code).subscribe(
+      (data) => {
+        console.log(data)
+      }
+    );
+  }
   makereservation(idstudent: number, idchambre: number, reservation: Reservation) {
     this.reservationsService.reserveachambre(idstudent, idchambre, reservation);
+  }
+  getassignedtoreservation(){
+    //this.reservationsService.
   }
 
 }
