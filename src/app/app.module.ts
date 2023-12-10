@@ -21,14 +21,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
 import {ToastrModule} from "ngx-toastr";
-
+import { GestionUserComponent } from './backoffice/gestion-user/gestion-user.component';
+import {BackofficeModule} from "./features/backoffice/backoffice.module";
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CodeVerificationComponent } from './code-verification/code-verification.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     SignUpComponent,
-
-
+    GestionUserComponent,
+    ResetPasswordComponent,
+    CodeVerificationComponent,
+    NewPasswordComponent,
 
   ],
   imports: [

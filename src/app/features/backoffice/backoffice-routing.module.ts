@@ -20,6 +20,7 @@ const routes: Routes = [
   {path:'gestion-bloc', component:GestionBlocComponent},
   {path:'gestion-chambre', component:GestionChambreComponent},
   {path:'add-foyer', component:FormFoyerComponent},
+  {path:'gestion-user', loadChildren: () => import('../user/user.module').then((m) => m.UserModule)}
   {path:'add-bloc', component:FormBlocComponent},
   {path:'add-bloc/:id', component:FormBlocComponent},
   {path:'add-chambre', component:FormChambreComponent},
@@ -34,10 +35,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes),
-
-
-  ],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class BackofficeRoutingModule { }

@@ -39,6 +39,9 @@ import {QRCodeModule} from "angularx-qrcode";
     StatistiqueComponent,
     FormFoyerComponent
   ],
+  exports: [
+    BackofficeComponent
+  ],
   imports: [
     CommonModule,
     BackofficeRoutingModule,

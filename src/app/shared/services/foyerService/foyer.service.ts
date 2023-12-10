@@ -51,6 +51,5 @@ export class FoyerService {
   fetchById(id:Number)
   {
     return this._http.get<Foyer>(this.apiUrl+'retrieve-foyer/'+id, this.httpOptions );
-
   }
 }

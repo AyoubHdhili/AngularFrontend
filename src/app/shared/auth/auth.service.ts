@@ -20,4 +20,14 @@ export class AuthService {
   IsLoggedIn(){
     return !!localStorage.getItem('token');
   }
+  sendCode(email:string){
+    return this.http.put(this.endpoint+'/generatecode',{email:email});
+  }
+  verifCode(code:string, email:string){
+    return this.http.post(this.endpoint+'/verif-code/'+code,{email:email});
+  }
+
+  changePassword(email : string, currentPassword: string, newPassword: string, confirmationPassword: string){
+    return this.http.put(this.endpoint+'/reset-password',{email: email, currentPassword: currentPassword, newPassword: newPassword, confirmationPassword: confirmationPassword})
+  }
 }
