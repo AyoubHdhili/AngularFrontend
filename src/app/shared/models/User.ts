@@ -10,4 +10,5 @@ export class User{
   dateNaissance!:Date;
   password!:string;
   role!:Roles;
+  code!:string;
 }

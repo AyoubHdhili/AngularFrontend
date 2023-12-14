@@ -18,7 +18,15 @@
                
                 <td>{{b.idBloc}}</td>
                 <td>{{b.nomBloc}}</td>
-                <td>{{b.capaciteBloc}}</td>
+                <td>
+                  <ng-container *ngIf="b.capaciteBloc === myMap.get(b.idBloc); else notFull">
+                    {{ b.capaciteBloc }} / {{ myMap.get(b.idBloc) }} <span class="red-text">full</span>
+                  </ng-container>
+                  <ng-template #notFull>
+                    {{ b.capaciteBloc }} / {{ myMap.get(b.idBloc) }}
+                  </ng-template>
+                </td>
+                
                 <td > {{b.foyer ? b.foyer.nomFoyer : 'NULL'}}</td>
                 
                 <td>
@@ -43,9 +51,8 @@
           
           
       </div>
-      <a [routerLink]="['/admin/add-bloc']" class="nav-link add-bloc-button">
-        <p class="button-text">Ajouter Bloc</p>
-      </a>
+      <a #downloadLink class="nav-link  .download-button" download="Overview_Report.pdf"></a>
+      <button (click)="pdfblocchambre()" class="download-button">Download PDF</button>
      
       <a [routerLink]="['/admin/stat']"  class="nav-link add-bloc-button2">
        
@@ -54,5 +61,10 @@
           
         </p>
       </a>
+      <a [routerLink]="['/admin/add-bloc']" class="nav-link add-bloc-button">
+        <p class="button-text">Ajouter Bloc</p>
+      </a>
+     
+     
       
 </app-backoffice>

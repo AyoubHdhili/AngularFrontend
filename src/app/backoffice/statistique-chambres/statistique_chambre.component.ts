@@ -60,11 +60,8 @@ export class StatistiqueChambreComponent implements OnInit {
   }
 
   isValidBlockStatistics(data: any): data is BlockStatistics {
-    // Validate the structure of received data to match BlockStatistics interface
-    // For instance:
-    // return data && typeof data === 'object' && Object.keys(data).length > 0;
-    // Ensure the structure aligns with BlockStatistics interface
-    return true; // Replace this with your validation logic
+  
+    return true; 
   }
 
   prepareChartOptions(data: BlockStatistics): ChartOptions {
@@ -102,7 +99,7 @@ export class StatistiqueChambreComponent implements OnInit {
         categories: blockNames,
         labels: {
           formatter: function (value: string) {
-            return value; // Returning block names as x-axis labels
+            return value; 
           }
         }
       },

@@ -16,11 +16,12 @@
               *ngIf="capaciteBloc.invalid && (capaciteBloc.touched || capaciteBloc.dirty)">
                       <div *ngIf="capaciteBloc.errors!['required']">capaciteBloc is required !</div>
                       <div *ngIf="capaciteBloc.errors!['minlength']">capaciteBloc must have at least 3 characters !</div>
+                      <div *ngIf="capaciteBloc.errors!['min']">capaciteBloc must be > 0 !</div>
                       <div *ngIf="capaciteBloc.errors!['pattern']">capaciteBloc invalid !</div>
               </div>
         
         
-              <div>
+              <div *ngIf="!update" class="mb-3" >
                 <br>
                 <label>Foyer</label>
                 <select formControlName="foyer" class="form-select">
@@ -33,8 +34,12 @@
       
         
       </div>
-      <div class="mb-3">
-        <input type="submit" value="Ajouter" class="btn btn-primary"  >
+      <div *ngIf="!update" class="mb-3">
+        <input type="submit" value="Ajouter" class="btn btn-primary" >
+      </div>
+    
+      <div *ngIf="update" class="mb-3">
+        <input type="submit" value="Modifier" class="btn btn-primary" >
       </div>
       
       </form>

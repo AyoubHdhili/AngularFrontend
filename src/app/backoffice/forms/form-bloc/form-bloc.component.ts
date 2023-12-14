@@ -6,6 +6,7 @@ import { FoyerService } from 'src/app/shared/services/foyerService/foyer.service
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Bloc } from 'src/app/shared/models/bloc';
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-form-bloc',
   templateUrl: './form-bloc.component.html',
@@ -15,9 +16,12 @@ export class FormBlocComponent  implements OnInit {
 
   foyer: any[] = [];
   idBloc: number=0; 
+  update: Boolean = false;
   bloc:Bloc=new Bloc() ;  
 
-  constructor (private _BlocService: BlocService,private _FoyerService : FoyerService, private router: Router,private route:  ActivatedRoute) {}
+  constructor (private _BlocService: BlocService,private _FoyerService : FoyerService, 
+    private router: Router,private route:  ActivatedRoute,
+    private toast: ToastrService) {}
   BlocForm: FormGroup = new FormGroup({
     nomBloc: new FormControl(
       '',
@@ -30,7 +34,8 @@ export class FormBlocComponent  implements OnInit {
       '',
       [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        Validators.min(1)
       ]
     ),
    
@@ -45,6 +50,10 @@ export class FormBlocComponent  implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.idBloc = params['id'];
+      if(this.idBloc!=undefined)
+      {
+        this.update=true;
+      }
       this._BlocService.getBlocById(this.idBloc).subscribe(
         (res)=>
           {
@@ -76,38 +85,36 @@ export class FormBlocComponent  implements OnInit {
  
   
   add(f: FormGroup) {
-
-
-    const formValue = {...this.BlocForm.value };
+    const formValue = { ...this.BlocForm.value };
     delete formValue.foyer;
     console.log("Value of this.idBloc:", this.idBloc);
-    if (this.idBloc == undefined)
-    {
-   
-      console.log("Attempting to add a new bloc"); 
-    this._BlocService.addBloc(formValue).subscribe({
-      next: () => 
-     
-      this._BlocService.affecterBlocToFoyer(this.BlocForm.value.nomBloc,this.BlocForm.value.foyer).subscribe({
-        next: () => 
-       
-  
-         this.router.navigate(['/admin/gestion-bloc']),
-         
-      })
-    });
-  }
-  else {
-    console.log("Attempting to update bloc with ID:", this.idBloc); 
-    console.log(this.idBloc)
-   this._BlocService.updateBloc(this.idBloc,formValue).subscribe({
-     next: () => 
-     this.router.navigate(['/admin/gestion-bloc']),
-   
-     
-   });
-   
-  }
-
-  }
+    if (this.idBloc === undefined) {
+      console.log("Attempting to add a new bloc");
+      this._BlocService.addBloc(formValue).subscribe({
+        next: () => {
+          this._BlocService.affecterBlocToFoyer(this.BlocForm.value.nomBloc, this.BlocForm.value.foyer).subscribe({
+            next: () => {
+              this.router.navigate(['/admin/gestion-bloc']);
+              this.toast.success("Bloc added successfully!", "Success", {
+                timeOut: 5000,
+                positionClass: 'toast-top-center'
+              });
+            }
+          });
+        }
+      });
+    } else {
+      console.log("Attempting to update bloc with ID:", this.idBloc);
+      console.log(this.idBloc);
+      this._BlocService.updateBloc(this.idBloc, formValue).subscribe({
+        next: () => {
+          this.router.navigate(['/admin/gestion-bloc']);
+          this.toast.success("Bloc updated successfully!", "Success", {
+            timeOut: 5000,
+            positionClass: 'toast-top-center'
+          });
+        }
+      });
+    }
+}
 }
