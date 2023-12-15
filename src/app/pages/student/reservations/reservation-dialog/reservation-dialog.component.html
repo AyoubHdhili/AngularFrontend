@@ -34,7 +34,7 @@
         <div *ngIf="roommateMatchResult" style=" margin-left: 13%;" class="info-image">
             <img src="assets/img/ahmed.jpg" alt="ahmed" style="max-width: 100%;">
         </div>
-        <mat-checkbox *ngIf="roommateMatchResult" [checked]= "checked" [(ngModel)]="selectedDate">
+        <mat-checkbox *ngIf="roommateMatchResult" [checked]= "checked" [(ngModel)]="checked" [ngModel]="checked">
             <label>
                 Send Email to the matched student
             </label>
