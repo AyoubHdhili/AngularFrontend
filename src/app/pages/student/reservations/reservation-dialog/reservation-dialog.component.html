@@ -1,1 +1,49 @@
-<p>reservation-dialog works!</p>
+<h2 mat-dialog-title>Select Reservation Date</h2>
+<mat-dialog-content style="display: inline-flex;">
+    <mat-form-field style="max-width: 50%; display: contents;">
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="selectedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div>
+        <div *ngIf="roommateMatchResult" class="additional-info " style=" ">
+            <div class="info-field">
+                <span> Family Name : {{roommateMatchResult.etudiant.nomEt}}</span>
+                <span> Last Name : {{roommateMatchResult.etudiant.prenomEt}}</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div *ngIf="roommateMatchResult" class="additional-info " style=" margin-left: 13%;">
+            <div *ngIf="roommateMatchResult.matchingScores[0] === 1" class="info-field">
+                <label>University:</label>
+                <span> You are part of the same university</span>
+            </div>
+            <div *ngIf="roommateMatchResult.matchingScores[1]>=0.66" class="info-field">
+                <label>Shared Interests:</label>
+                <div *ngFor="let i of roommateMatchResult.similarinterests">
+                    <span style="color: blue; font-weight:600;">
+                        {{i}}
+                    </span>
+                </div>
+            </div>
+            <div *ngIf="roommateMatchResult.matchingScores[2]>=0.75" class="info-field">
+                <label>Your academic performance is similar</label>
+            </div>
+        </div>
+        <div *ngIf="roommateMatchResult" style=" margin-left: 13%;" class="info-image">
+            <img src="assets/img/ahmed.jpg" alt="ahmed" style="max-width: 100%;">
+        </div>
+        <mat-checkbox *ngIf="roommateMatchResult" [checked]= "checked" [(ngModel)]="selectedDate">
+            <label>
+                Send Email to the matched student
+            </label>
+        </mat-checkbox>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="{selectedDate,checked,idmatched,matchingScores}" cdkFocusInitial>Reserve</button>
+    <button mat-button (click)="GetMatch()">Find Best Match</button>
+</mat-dialog-actions>

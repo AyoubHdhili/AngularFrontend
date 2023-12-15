@@ -31,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core'; // Example for MatNativeDateModule
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { MatNativeDateModule } from '@angular/material/core'; // Example for Mat
     MatButtonModule,
     MatIconModule,
     MatNativeDateModule,
+    MatCheckboxModule,
   ]
 })
 export class FrontofficeModule { }

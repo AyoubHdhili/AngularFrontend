@@ -44,4 +44,8 @@ export class StudentService {
     return this._http.delete(`${this.apiUrl}remove-etudiant${idstudent}`, this.options);
   }
 
+  MatchStudent(idstudent: number): Observable<any> {
+    return this._http.get(`${this.apiUrl}match/${idstudent}`, this.options)
+  }
+
 }

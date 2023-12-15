@@ -2,7 +2,7 @@ import { Chambre } from "./chambre";
 import { Etudiant } from "./etudiant";
 
 export class Reservation {
-    idReservation!: string;
+    idReservation!: number;
     anneeReservation!: Date;
     estValide!: boolean;
     etudiants!: Etudiant[];

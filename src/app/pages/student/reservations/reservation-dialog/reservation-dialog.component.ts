@@ -1,29 +1,47 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { StudentService } from 'src/app/frontoffice/services/student.service';
+import { Etudiant } from 'src/app/shared/models/etudiant';
+import { environment } from 'src/environments/environment.development';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-reservation-dialog',
-  template: `
-    <h2 mat-dialog-title>Select Reservation Date</h2>
-    <mat-dialog-content>
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="selectedDate">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </mat-dialog-content>
-    <mat-dialog-actions>
-      <button mat-button (click)="onCancelClick()">Cancel</button>
-      <button mat-button [mat-dialog-close]="selectedDate" cdkFocusInitial >Reserve</button>
-    </mat-dialog-actions>
-  `,
+  templateUrl: './reservation-dialog.component.html',
 })
 export class ReservationDialogComponent {
   selectedDate!: Date;
+  checked: boolean=false;
+  id = parseInt(environment.idstudent || '-1');
+  idmatched!:number;
+  roommateMatchResult!: RoommateMatchResponse;
+  matchingScores!:number[];
 
-  constructor(public dialogRef: MatDialogRef<ReservationDialogComponent>) { }
+  constructor(public dialogRef: MatDialogRef<ReservationDialogComponent>, private studentService: StudentService) { }
 
   onCancelClick(): void {
     this.dialogRef.close();
   }
+
+  GetMatch() {
+    this.studentService.MatchStudent(this.id).subscribe({
+      next: (response) => {
+        console.log("match success");
+        this.roommateMatchResult = response;
+        this.idmatched=this.roommateMatchResult.etudiant.idEtudiant;
+        this.matchingScores=this.roommateMatchResult.matchingScores;
+      },
+      error: (err) => {
+        console.error('Error matching:', err);
+      },
+      complete: () => {
+      },
+    });
+  }
+
+}
+export interface RoommateMatchResponse {
+  etudiant: Etudiant;
+  matchingScores: number[];
+  similarinterests: string[];
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ReservationsService } from 'src/app/frontoffice/services/reservations.service';
 import { Reservation } from 'src/app/shared/models/reservation';
 import { environment } from 'src/environments/environment.development';
@@ -12,12 +12,20 @@ import { ActivatedRoute } from '@angular/router';
 export class ReservationsComponent {
   @Input() reload!: boolean;
 
+  @Output() buttonClicked = new EventEmitter<number>();
+
+  onButtonClicked(idreser:number) {
+    this.buttonClicked.emit(idreser);
+  }
+
   id = parseInt(environment.idstudent || '-1');
   reservations!: Reservation[];
   reservation!: Reservation;
   idstud!: number;
   idreserv!: number;
   code!: string;
+  send!:boolean;
+  idmatch!:number;
   constructor(private route: ActivatedRoute, private reservationsService: ReservationsService) { }
 
   ngOnInit(): void {
@@ -53,7 +61,7 @@ export class ReservationsComponent {
     );
   }
   makereservation(idstudent: number, idchambre: number, reservation: Reservation) {
-    this.reservationsService.reserveachambre(idstudent, idchambre, reservation);
+    //this.reservationsService.reserveachambre(idstudent, idchambre, reservation,this.send,this.idmatch);
   }
   getassignedtoreservation(){
     //this.reservationsService.

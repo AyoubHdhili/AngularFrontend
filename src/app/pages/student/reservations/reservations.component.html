@@ -14,6 +14,7 @@
                             <h5 class="card-title">reservation ID :{{r.idReservation}}</h5>
                             <p class="card-text">Room : {{r.chambre.numeroChambre}}</p>
                             <p class="card-text">Room Type : {{r.chambre.typeC}}</p>
+                            <button (click)="onButtonClicked(r.idReservation)">Delete reservation</button>
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,7 @@
         <div class="alert alert-info">Il exist  no chambres disponible pour ce bloc.</div>
     </ng-template>
 </div>
-<app-reservations [reload]="reservationInProgress" ></app-reservations>
+<app-reservations [reload]="reservationInProgress" (buttonClicked)="onButtonClickedInChild($event)" ></app-reservations>
 <footer class="bg-dark">
     <div class="container py-4 py-lg-5">
       <div class="row justify-content-center">

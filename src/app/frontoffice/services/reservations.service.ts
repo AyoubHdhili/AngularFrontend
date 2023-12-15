@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment.development';
 import { Reservation } from 'src/app/shared/models/reservation';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ReservationRequest } from '../gestion-chambrefront/gestion-chambrefront.component';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,8 @@ export class ReservationsService {
   getReservationbyStudent(studentid: number) {
     return this._http.get<Reservation[]>(`${this.apiUrl}reservationsbystudent/${studentid}`, this.options);
   }
-  reserveachambre(idetudiant: number, idchambre: number, reservation: Reservation): Observable<any> {
-    return this._http.put(`${this.apiUrl}newreserv/${idetudiant}/${idchambre}`, reservation, this.options);
+  reserveachambre(idetudiant: number, idchambre: number, body: ReservationRequest, send: boolean, idmatch: number): Observable<any> {
+    return this._http.put(`${this.apiUrl}newreserv/${idetudiant}/${idchambre}/${send}/${idmatch}`, body, this.options);
   }
   validate(idstud: number, idreserv: number, code: string): Observable<any> {
     return this._http.patch(`${this.apiUrl}validate/${idstud}/${idreserv}/${code}`, this.options);
@@ -45,7 +46,7 @@ export class ReservationsService {
   }
 
   DeleteReservation(idreser: number): Observable<any> {
-    return this._http.delete(`${this.apiUrl}delete-reservation${idreser}`, this.options);
+    return this._http.delete(`${this.apiUrl}delete/${idreser}`, this.options);
   }
 
 
