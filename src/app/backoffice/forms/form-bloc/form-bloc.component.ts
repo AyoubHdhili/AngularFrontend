@@ -15,11 +15,11 @@ import {ToastrService} from "ngx-toastr";
 export class FormBlocComponent  implements OnInit {
 
   foyer: any[] = [];
-  idBloc: number=0; 
+  idBloc: number=0;
   update: Boolean = false;
-  bloc:Bloc=new Bloc() ;  
+  bloc:Bloc=new Bloc() ;
 
-  constructor (private _BlocService: BlocService,private _FoyerService : FoyerService, 
+  constructor (private _BlocService: BlocService,private _FoyerService : FoyerService,
     private router: Router,private route:  ActivatedRoute,
     private toast: ToastrService) {}
   BlocForm: FormGroup = new FormGroup({
@@ -38,13 +38,13 @@ export class FormBlocComponent  implements OnInit {
         Validators.min(1)
       ]
     ),
-   
+
     foyer: new FormControl(
 
 
       ),
 
- 
+
   });
 
   ngOnInit(): void {
@@ -57,11 +57,11 @@ export class FormBlocComponent  implements OnInit {
       this._BlocService.getBlocById(this.idBloc).subscribe(
         (res)=>
           {
-          
-            this.BlocForm.patchValue(res as Bloc) ; 
- 
+
+            this.BlocForm.patchValue(res as Bloc) ;
+
           }
- 
+
       )
    });
 
@@ -74,16 +74,16 @@ export class FormBlocComponent  implements OnInit {
     );
   }
 
- 
+
   get nomBloc() {
     return this.BlocForm.controls['nomBloc'];
-  }  
+  }
 
   get capaciteBloc() {
     return this.BlocForm.controls['capaciteBloc'];
   }
- 
-  
+
+
   add(f: FormGroup) {
     const formValue = { ...this.BlocForm.value };
     delete formValue.foyer;

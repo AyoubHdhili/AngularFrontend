@@ -18,9 +18,9 @@ import { throwError } from 'rxjs';
 export class FormChambreComponent implements OnInit {
   BlocIds: any[] = [];
   update: Boolean = false;
-  idChambre: number=0; 
-  chambre:Chambre=new Chambre() ;  
-  constructor (private _ChambreService:ChambreService,private _BlocService:BlocService, 
+  idChambre: number=0;
+  chambre:Chambre=new Chambre() ;
+  constructor (private _ChambreService:ChambreService,private _BlocService:BlocService,
     private router: Router,private route:  ActivatedRoute,
     private toast: ToastrService) {}
 
@@ -37,13 +37,13 @@ export class FormChambreComponent implements OnInit {
       '',
       [
         Validators.required
-    
+
       ]
     ),
-   
+
     idBloc: new FormControl('', Validators.required),
 
- 
+
   });
 ngOnInit(): void {
 
@@ -56,8 +56,8 @@ ngOnInit(): void {
      this._ChambreService.getChambreById(this.idChambre).subscribe(
        (res)=>
          {
-         
-           this.ChambreForm.patchValue(res as Chambre) ; 
+
+           this.ChambreForm.patchValue(res as Chambre) ;
 
          }
 
@@ -76,7 +76,7 @@ get chambreTypes() {
 }
 get numeroChambre() {
   return this.ChambreForm.controls['numeroChambre'];
-}  
+}
 
 get typeC() {
   return this.ChambreForm.controls['typeC'];
