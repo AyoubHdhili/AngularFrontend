@@ -24,7 +24,6 @@ export class SignInComponent {
           });
       localStorage.setItem('token', res.token);
       localStorage.setItem('userid',String(res.user.id));
-      localStorage.setItem('email',res.user.email);
       localStorage.setItem('firstname', res.user.firstname);
       localStorage.setItem('lastname', res.user.lastname);
       if(res.user.role === 'ETUDIANT'){
